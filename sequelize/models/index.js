@@ -16,12 +16,16 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], {
     logging: console.log,
+    logQueryParameters: true,
+    benchmark: true,
     host: config.host, 
     port: config.port, 
     dialect: config.dialect });
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, {
     logging: console.log,
+    logQueryParameters: true,
+    benchmark: true,
     host: config.host,
     port: config.port, 
     dialect: config.dialect });

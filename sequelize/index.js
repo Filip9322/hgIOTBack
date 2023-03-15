@@ -14,8 +14,6 @@ const sequelize = new Sequelize(
   }
 );
 
-console.log(sequelize, "hi");
-
 const modelDefiners = [
     require('./models/company.model')
     // All models could be listed here
