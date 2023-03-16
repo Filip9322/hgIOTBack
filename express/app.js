@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter   = require('./routes/index');
+var usersRouter   = require('./routes/users');
+var companyRouter = require('./routes/company');
 
 var app = express();
 
@@ -19,15 +20,65 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+const routes = {
+  users: usersRouter,
+  company: companyRouter
+};
 
-// catch 404 and forward to error handler
+// We define the standart REST API for each route ( if they exist )
+for (const [routeName, routeController] of Object.entries(routes)) {
+    if(routeController.getAll) {
+      app.get(
+        `/api/${routeName}`,
+        makeHandlerAwareOfAsyncErrors(routeController.getAll)
+      );
+    }
+    if(routeController.getById) {
+      app.get(
+        `/api/${routeName}/:id`,
+        makeHandlerAwareOfAsyncErrors(routeController.getById)
+      );
+    }
+    if(routeController.create) {
+      app.post(
+        `/api/${routeName}`,
+        makeHandlerAwareOfAsyncErrors(routeController.create)
+      );
+    }
+    if(routeController.update) {
+      app.put(
+        `/api/${routeName}/:id`,
+        makeHandlerAwareOfAsyncErrors(routeController.update)
+      );
+    }
+    if(routeController.remove) {
+      app.delete(
+        `/api/${routeName}/:id`,
+        makeHandlerAwareOfAsyncErrors(routeController.remove)
+      );
+    }  
+}
+
+//app.use('/api', indexRouter);
+app.use('/api/users', usersRouter);
+//app.use('/api/company', companyRouter);
+
+/* catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+*/
+/* --  Error handler -- */
+function makeHandlerAwareOfAsyncErrors(handler) {
+  return async function(req, res, next){
+    try {
+      await handler(req, res);
+    } catch (error) {
+      next(error);
+    }
+  }
+}
 
-// error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

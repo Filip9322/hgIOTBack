@@ -15,10 +15,15 @@ module.exports = (sequelize) => {
   }
 
   Company.init({
-    company_id  :  DataTypes.INTEGER,
+    id  :  {
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+            type: DataTypes.INTEGER
+      },
     company_name:  DataTypes.STRING(100)
   },{
-    sequelize, modelName: 'companies'
+    sequelize, modelName: 'Companies'
   });
   
   return Company;
