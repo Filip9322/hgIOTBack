@@ -19,7 +19,6 @@ async function getById(req, res) {
 };
 
 async function create (req, res){
-	console.log(req.body,"bored");
 	if (req.body.id) {
 		res.status(400).send('Bad request: ID should not be provided, since it is determined automatically by the db.');
 	} else {

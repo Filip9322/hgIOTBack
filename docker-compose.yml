@@ -13,3 +13,5 @@ services:
     environment:
       NODE_ENV: development
       DEBUG: nodejs-docker-express:*
+networks:
+  back_end:
