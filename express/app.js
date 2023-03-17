@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter   = require('./routes/index');
-var usersRouter   = require('./routes/users');
+var usersRouter   = require('./routes/user');
 var companyRouter = require('./routes/company');
 
 var app = express();
@@ -59,15 +59,6 @@ for (const [routeName, routeController] of Object.entries(routes)) {
     }  
 }
 
-//app.use('/api', indexRouter);
-app.use('/api/users', usersRouter);
-//app.use('/api/company', companyRouter);
-
-/* catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-*/
 /* --  Error handler -- */
 function makeHandlerAwareOfAsyncErrors(handler) {
   return async function(req, res, next){

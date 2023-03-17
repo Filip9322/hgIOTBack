@@ -26,12 +26,12 @@ module.exports = (sequelize) => {
     company_type:  DataTypes.STRING(100),
     company_CEO:   DataTypes.STRING(50),
     company_tel:   DataTypes.STRING(20),
-    company_mobile: DataTypes.STRING(20),
-    company_email: DataTypes.STRING(50),
+    company_mob:  DataTypes.STRING(20),
+    company_email:   DataTypes.STRING(50),
     company_address: DataTypes.STRING(100),
     company_business_number: DataTypes.STRING(20),
-    bigo: DataTypes.STRING(255),
-    user_mod: DataTypes.INTEGER,
+    bigo:       DataTypes.STRING(255),
+    user_mod:   DataTypes.INTEGER,
     is_deleted: DataTypes.BOOLEAN,
   },{
     sequelize, modelName: 'Companies'

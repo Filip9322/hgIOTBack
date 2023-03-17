@@ -10,12 +10,14 @@ const sequelize = new Sequelize(
   {
       host: `${process.env.MYSQL_HOST}`,
       port: `${process.env.MYSQL_DB_PORT}`,
-      dialect: 'mysql'
+      dialect: 'mysql',
+      define: { charset: 'utf8', dialectOptions: { collate: 'utf8_general_ci' }}
   }
 );
 
 const modelDefiners = [
-    require('./models/company.model')
+    require('./models/company.model'),
+    require('./models/user.model')
     // All models could be listed here
 ];
 

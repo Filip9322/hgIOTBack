@@ -2,43 +2,51 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Companies', {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      country_id: {
+      user_ID: {
+        type: Sequelize.STRING(20),
+        allowNull: false
+      },
+      user_company: {
         type: Sequelize.INTEGER,
         allowNull: true
       },
-      company_name: {
-        type: Sequelize.STRING(100),
-        allowNull: false
-      },
-      company_CEO: {
-        type: Sequelize.STRING(50),
-        allowNull: true
-      },
-      company_tel: {
+      user_name: {
         type: Sequelize.STRING(20),
         allowNull: false
       },
-      company_mobile: {
+      user_pw: {
+        type: Sequelize.STRING(255),
+        allowNull: false
+      },
+      user_mob: {
         type: Sequelize.STRING(20),
         allowNull: true
       },
-      company_email: {
-        type: Sequelize.STRING(50),
-        allowNull: true
+      user_tel: {
+        type: Sequelize.STRING(20),
+        allowNull: false
       },
-      company_address: {
-        type: Sequelize.STRING(100),
-        allowNull: true
+      user_email: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+      },
+      user_active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
       },
       company_business_number: {
         type: Sequelize.STRING(20),
+        allowNull: true
+      },
+      access_token: {
+        type: Sequelize.STRING(255),
         allowNull: true
       },
       bigo: {
@@ -64,6 +72,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Companies');
+    await queryInterface.dropTable('Users');
   }
 };

@@ -20,7 +20,12 @@ if (config.use_env_variable) {
     benchmark: true,
     host: config.host, 
     port: config.port, 
-    dialect: config.dialect });
+    dialect: config.dialect,
+    dialectOptions: {
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+    } 
+  });
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, {
     logging: console.log,
@@ -28,7 +33,12 @@ if (config.use_env_variable) {
     benchmark: true,
     host: config.host,
     port: config.port, 
-    dialect: config.dialect });
+    dialect: config.dialect,
+    dialectOptions: {
+      charset: 'utf8',
+      collate: 'utf8_general_ci',
+    } 
+  });
 }
 
 
