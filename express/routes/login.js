@@ -14,7 +14,7 @@ router.post('/', async function(req, res, next) {
 	try{
 
 		// Validate body input
-		var user_id   = req.body.user_ID;
+		var user_id   = String(req.body.user_ID).toLowerCase();
 		var user_pass = req.body.user_pw;
 
 		if(user_id && user_pass){
@@ -67,6 +67,8 @@ router.post('/register', async function(req, res, next) {
 			// Encrypt user password
 			var hashPass = await hashPassword(req.body.user_pw);
 			req.body.user_pw = hashPass;
+			req.body.user_ID    = String(req.body.user_ID).toLowerCase();
+			req.body.user_email = String(req.body.user_email).toLowerCase();
 			
 			// Create User Token
 			const token = createToken(user_id, user_email);
@@ -84,6 +86,9 @@ router.post('/register', async function(req, res, next) {
 		next(err);
 	}
 });
+
+
+//router.post('lostpassword')
 
 async function hashPassword(plaintextPassword){
 	const hash = await bcrypt.hash(plaintextPassword,10);
