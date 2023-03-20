@@ -1,6 +1,5 @@
 const { models } = require('../../sequelize'); 
 const { getIdParam } = require('../helpers');
-const bcrypt         = require('bcrypt');
 
 async function getAll (req, res) {
 	const users = await models.Users.findAll();
@@ -9,7 +8,7 @@ async function getAll (req, res) {
 
 
 async function getById(req, res) {
-	const id = getIdParam(req);
+	const id = getIdParam('req: ',req);
 	const users = await models.Users.findByPk(id);
 	if(users) {
 		res.status(200).json(users);
@@ -19,19 +18,16 @@ async function getById(req, res) {
 };
 
 async function create (req, res){
+	console.log(Object.keys(req));
 	if (req.body.id) {
 		res.status(400).send('Bad request: ID should not be provided, since it is determined automatically by the db.');
 	} else {
-		var hashPass = await hashPassword(req.body.user_pw);
-		req.body.user_pw = hashPass;
-		await models.Users.create(req.body);
-		res.status(201).end();
+		res.status(403).send('Not allowed to create users by the API');
 	}
 };
 
 async function update(req, res) {
 	const id = getIdParam(req);
-
 	// We only accept an UPDATE request if the `:id` param matches the body `id`
 	if (req.body.id === id) {
 		await models.Users.update(req.body, {
@@ -54,11 +50,6 @@ async function remove(req, res) {
 	});
 	res.status(200).end();
 };
-
-async function hashPassword(plaintextPassword){
-	const hash = await bcrypt.hash(plaintextPassword,10);
-	return hash;
-}
 
 module.exports = {
 	getAll,
