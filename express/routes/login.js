@@ -87,8 +87,13 @@ router.post('/register', async function(req, res, next) {
 	}
 });
 
+router.get('lost_password', async function(req, res, next) {
+	res.status(403).send('Not allowed to recover password by GET Request');
+});
 
-//router.post('lostpassword')
+router.post('lost_password', async function(req, res, next) {
+	// TODO Functionality to recover password
+});
 
 async function hashPassword(plaintextPassword){
 	const hash = await bcrypt.hash(plaintextPassword,10);

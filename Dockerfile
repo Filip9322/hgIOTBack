@@ -2,7 +2,7 @@ FROM node:18-alpine as base
 
 WORKDIR /src
 COPY package*.json /
-EXPOSE 3000
+EXPOSE 3001
 
 
 FROM base as production

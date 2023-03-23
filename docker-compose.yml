@@ -9,7 +9,7 @@ services:
       - .:/src
     command: npm run start NODE_ENV=dev
     ports:
-      - '3000:3000'
+      - '3001:3001'
     environment:
       NODE_ENV: development
       DEBUG: nodejs-docker-express:*
