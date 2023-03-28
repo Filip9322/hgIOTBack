@@ -5,10 +5,11 @@ var express = require('express');
 var createError  = require('http-errors');
 var cookieParser = require('cookie-parser');
 
-var indexRouter   = require('./routes/index');
-var usersRouter   = require('./routes/user');
-var userRegLogin  = require('./routes/login');
-var companyRouter = require('./routes/company');
+var indexRouter    = require('./routes/index');
+var usersRouter    = require('./routes/user');
+var userRegLogin   = require('./routes/login');
+var userRegLogout  = require('./routes/logout');
+var companyRouter  = require('./routes/company');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Register, Login and Authenticate User
 app.use(cors());
 app.use('/login', userRegLogin);
+app.use('/logout', userRegLogout);
 // API routes
 const routes = {
   users: usersRouter,
