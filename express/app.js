@@ -6,10 +6,10 @@ var createError  = require('http-errors');
 var cookieParser = require('cookie-parser');
 
 var indexRouter    = require('./routes/index');
-var usersRouter    = require('./routes/user');
+var usersRouter    = require('./routes/API/user');
+var companyRouter  = require('./routes/API/company');
 var userRegLogin   = require('./routes/login');
 var userRegLogout  = require('./routes/logout');
-var companyRouter  = require('./routes/company');
 
 var app = express();
 
@@ -32,6 +32,7 @@ app.use('/logout', userRegLogout);
 const routes = {
   users: usersRouter,
   company: companyRouter
+  
 };
 
 // We define the standart REST API for each route ( if they exist )

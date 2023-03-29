@@ -3,7 +3,7 @@ var router = express.Router();
 const { models } = require('../../sequelize');
 const bcrypt     = require('bcrypt');
 const jwt        = require('jsonwebtoken');
-const userRouter = require('./user');
+const userRouter = require('./API/user');
 
 router.get('/', function(req, res, next) {
 	res.status(404).send('404 - Not found');
