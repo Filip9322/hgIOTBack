@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
 			autoIncrement: true,
 			primaryKey: true,
 			type: DataTypes.INTEGER
-		}
+		},
 		module_id: DataTypes.INTEGER,
 		role_id: DataTypes.INTEGER,
 		allow_create: DataTypes.BOOLEAN,
@@ -25,6 +25,6 @@ module.exports = (sequelize) => {
 		user_mod: DataTypes.INTEGER,
 		is_deleted: DataTypes.BOOLEAN
 	},{
-		sequelize, modelName: 'permission_by_rol'
+		sequelize, modelName: 'Permission_by_rol'
 	});
 }

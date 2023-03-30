@@ -20,7 +20,7 @@ module.exports = {
       user_role: {
         type: Sequelize.INTEGER,
         allowNull: false
-      }
+      },
       user_name: {
         type: Sequelize.STRING(20),
         allowNull: false
@@ -44,10 +44,6 @@ module.exports = {
       user_active: {
         type: Sequelize.BOOLEAN,
         allowNull: false
-      },
-      company_business_number: {
-        type: Sequelize.STRING(20),
-        allowNull: true
       },
       access_token: {
         type: Sequelize.STRING(255),

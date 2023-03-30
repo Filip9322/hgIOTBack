@@ -1,4 +1,4 @@
-const { models } = require('../../../sequelize'); 
+const { models }     = require('../../../sequelize'); 
 const { getIdParam } = require('../../helpers');
 
 async function getAll (req, res) {
@@ -17,7 +17,7 @@ async function getById(req, res) {
 	}
 };
 
-async function create (req, res){
+async function create (req, res) {
 	console.log(Object.keys(req));
 	if (req.body.id) {
 		res.status(400).send('Bad request: ID should not be provided, since it is determined automatically by the db.');
