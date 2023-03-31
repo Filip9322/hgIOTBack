@@ -25,6 +25,6 @@ module.exports = (sequelize) => {
 		user_mod: DataTypes.INTEGER,
 		is_deleted: DataTypes.BOOLEAN
 	},{
-		sequelize, modelName: 'Permission_by_rol'
+		sequelize, modelName: 'Role_policy'
 	});
 }
