@@ -16,7 +16,6 @@ module.exports = (sequelize) => {
 			primaryKey: true,
 			type: DataTypes.INTEGER
 		},
-		module_id: DataTypes.INTEGER,
 		role_id: {
 			type: DataTypes.INTEGER,
 			references: 'Roles',
@@ -33,6 +32,6 @@ module.exports = (sequelize) => {
 		},
 		is_deleted: DataTypes.BOOLEAN
 	},{
-		sequelize, modelName: 'Role_policy'
+		sequelize, modelName: 'Role_Policy'
 	});
 }

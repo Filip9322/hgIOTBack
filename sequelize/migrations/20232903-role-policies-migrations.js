@@ -2,16 +2,12 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('Role_policy', {
+		await queryInterface.createTable('Role_Policy', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
-			},
-			module_id: {
-				type: Sequelize.INTEGER,
-				allowNull: false
 			},
 			role_id: {
 				type: Sequelize.INTEGER,
@@ -54,6 +50,6 @@ module.exports = {
 		});
 	},
 	async down (queryInterface, Sequelize) {
-		await queryInterface.dropTable('Role_policy');
+		await queryInterface.dropTable('Role_Policy');
 	}
 }
