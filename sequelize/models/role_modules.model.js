@@ -17,9 +17,17 @@ module.exports = (sequelize) => {
 			primaryKey: true,
 			type:   DataTypes.INTEGER
 		},
-		role_id:    DataTypes.INTEGER,
+		role_id:    {
+			type: DataTypes.INTEGER,
+			references: 'Roles',
+			referencesKey: 'id'
+		},
 		module_id:  DataTypes.INTEGER,
-		user_mod:   DataTypes.INTEGER,
+		user_mod:   {
+			type: DataTypes.INTEGER,
+			references: 'Users',
+			referencesKey: 'id'
+		},
 		is_deleted: DataTypes.BOOLEAN
 	},{
 		sequelize, modelName: 'Role_Modules'

@@ -11,6 +11,7 @@ module.exports = {
 			},
 			user_id: {
 			 	type: Sequelize.INTEGER,
+			 	references: {model: 'Users', key: 'id'},
 			 	allowNull: false
 			},
 			province_id: {
@@ -19,6 +20,7 @@ module.exports = {
 			},
 			user_mod: {
 				type: Sequelize.INTEGER,
+				references: {model: 'Users', key: 'id'},
 				allowNull: false
 			},
 			is_deleted: {
@@ -34,9 +36,8 @@ module.exports = {
 				allowNull: false
 			}
 		});
-	},{
-		async down(queryInterface, Sequelize) {
+	},
+	async down(queryInterface, Sequelize) {
 			await queryInterface.dropTable('User_Provincies')
-		}
 	}
 }

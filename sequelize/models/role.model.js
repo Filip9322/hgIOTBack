@@ -17,7 +17,11 @@ module.exports = (sequelize) => {
 		},
 		role_name:  DataTypes.STRING(20),
 		bigo:       DataTypes.STRING(255),
-		user_mod:   DataTypes.INTEGER,
+		user_mod:   {
+			type: DataTypes.INTEGER,
+			references: 'Users',
+			referencesKey: 'id'
+		},
 		is_deleted: DataTypes.BOOLEAN
 	},{
 		sequelize, modelName: 'Roles'

@@ -17,9 +17,17 @@ module.exports = (sequelize) =>  {
 			primaryKey: true,
 			type:     DataTypes.INTEGER
 		},
-		user_id:      DataTypes.INTEGER,
+		user_id: {
+			type: DataTypes.INTEGER,
+			references: 'Users',
+			referencesKey: 'id'
+		},
 		province_id: DataTypes.INTEGER,
-		user_mod:     DataTypes.INTEGER,
+		user_mod:     {
+			type: DataTypes.INTEGER,
+			references: 'Users',
+			referencesKey: 'id'
+		},
 		is_deleted:   DataTypes.BOOLEAN
 	},{
 		sequelize, modelName: 'User_Provincies'

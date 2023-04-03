@@ -11,6 +11,7 @@ module.exports = {
 			},
 			role_id: {
 				type: Sequelize.INTEGER,
+				references: {model: 'Roles', key: 'id'},
 				allowNull: false
 			},
 			module_id: {
@@ -19,6 +20,7 @@ module.exports = {
 			},
 			user_mod: {
 				type: Sequelize.INTEGER,
+				references: {model: 'Users', key: 'id'},
 				allowNull: false
 			},
 			is_deleted: {
