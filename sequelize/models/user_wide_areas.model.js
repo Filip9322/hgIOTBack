@@ -22,7 +22,11 @@ module.exports = (sequelize) =>  {
 			references: 'Users',
 			referencesKey: 'id'
 		},
-		province_id: DataTypes.INTEGER,
+		wide_area_id: {
+			type: DataTypes.INTEGER
+			references: 'Wide_Areas',
+			referencesKey: 'id'
+		},
 		user_mod:     {
 			type: DataTypes.INTEGER,
 			references: 'Users',
@@ -30,7 +34,7 @@ module.exports = (sequelize) =>  {
 		},
 		is_deleted:   DataTypes.BOOLEAN
 	},{
-		sequelize, modelName: 'User_Provincies'
+		sequelize, modelName: 'User_Wide_Areas'
 	});
 
 	return UserProvincies;

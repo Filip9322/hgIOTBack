@@ -21,7 +21,7 @@ const modelDefiners = [
     require('./models/role.model'),
     require('./models/role_policies.model'),
     require('./models/user_areas.model'),
-    require('./models/user_provinces.model'),
+    require('./models/user_wide_areas.model'),
     require('./models/role_modules.model')
     // All models could be listed here
 ];

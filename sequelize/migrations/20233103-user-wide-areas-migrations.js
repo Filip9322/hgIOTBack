@@ -2,7 +2,7 @@
 /** @type {import ('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('User_Provincies', {
+		await queryInterface.createTable('User_Wide_Areas', {
 			id: {
 			 	allowNull: false,
 			 	autoIncrement: true,
@@ -14,8 +14,9 @@ module.exports = {
 			 	references: {model: 'Users', key: 'id'},
 			 	allowNull: false
 			},
-			province_id: {
+			wide_area_id: {
 			 	type: Sequelize.INTEGER,
+			 	references: {model: 'Wide_Areas', key: 'id'},
 			 	allowNull: false
 			},
 			user_mod: {
@@ -38,6 +39,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-			await queryInterface.dropTable('User_Provincies')
+			await queryInterface.dropTable('User_Wide_Areas')
 	}
 }
