@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "migrate:up":   "npx sequelize-cli db:migrate --env development",
-    "migrate:undo": "npx sequelize-cli db:migrate:undo --env development",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo:all --env development",
     "seed:up":      "npx sequelize-cli db:seed:all --env development",
     "seed:down":    "npx sequelize-cli db:seed:undo:all --env development"
   },

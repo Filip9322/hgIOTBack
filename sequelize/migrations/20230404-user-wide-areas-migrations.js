@@ -39,6 +39,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-			await queryInterface.dropTable('User_Wide_Areas')
+		await queryInterface.dropTable('User_Wide_Areas')
 	}
 }
