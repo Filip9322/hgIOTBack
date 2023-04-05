@@ -42,11 +42,11 @@ module.exports = {
       }
     ], {});
 
-    await queryInterface.bulkInsert('User_Areas', [
+    await queryInterface.bulkInsert('User_Wide_Areas', [
     {
       id: 1,
       user_id: 1,
-      area_id: 1,
+      wide_area_id: 1,
       user_mod: 1,
       is_deleted: false,
       createdAt: '2023-04-03 00:00:00',
@@ -54,11 +54,11 @@ module.exports = {
       }
     ], {});
 
-    await queryInterface.bulkInsert('User_Wide_Areas', [
+    await queryInterface.bulkInsert('User_Local_Areas', [
     {
       id: 1,
       user_id: 1,
-      province_id: 1,
+      local_area_id: 1,
       user_mod: 1,
       is_deleted: false,
       createdAt: '2023-04-03 00:00:00',
@@ -72,7 +72,7 @@ module.exports = {
     await queryInterface.bulkDelete('User_Roles', null, {});
     await queryInterface.bulkDelete('Role_Policy', null, {});
     await queryInterface.bulkDelete('Role_Modules', null, {});
-    await queryInterface.bulkDelete('User_Areas', null, {});
     await queryInterface.bulkDelete('User_Wide_Areas', null, {});
+    await queryInterface.bulkDelete('User_Local_Areas', null, {});
   }
 };

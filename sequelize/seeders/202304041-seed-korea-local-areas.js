@@ -18,7 +18,9 @@ module.exports = {
       	local_state: true,
       	bigo: '',
       	user_mod: 1,
-      	is_deleted: false
+      	is_deleted: false,
+        createdAt: '2023-04-04 00:00:00',
+        updatedAt: '2023-04-04 00:00:00'
       }
     ], {});
   },

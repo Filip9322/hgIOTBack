@@ -19,7 +19,7 @@ module.exports = {
 			},
 			wa_logo: {
 				type: Sequelize.STRING(255)
-			}
+			},
 			country_id: {
 				type: Sequelize.INTEGER
 			},

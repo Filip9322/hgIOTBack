@@ -2,7 +2,7 @@
 /** @type {import ('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('User_Areas', {
+		await queryInterface.createTable('User_Local_Areas', {
 			id: {
 			 	allowNull: false,
 			 	autoIncrement: true,
@@ -14,7 +14,7 @@ module.exports = {
 			 	references: {model: 'Users', key: 'id'},
 			 	allowNull: false
 			},
-			area_id: {
+			local_area_id: {
 			 	type: Sequelize.INTEGER,
 			 	allowNull: false
 			},
@@ -38,6 +38,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('User_Areas')
+		await queryInterface.dropTable('User_Local_Areas')
 	}
 }

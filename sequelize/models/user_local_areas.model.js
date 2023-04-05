@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
 			references: 'Users',
 			referencesKey: 'id'
 		},
-		area_id: DataTypes.INTEGER,
+		local_area_id: DataTypes.INTEGER,
 		user_mod:   {
 			type: DataTypes.INTEGER,
 			references: 'Users',
@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
 		},
 		is_deleted: DataTypes.BOOLEAN
 	},{
-		sequelize, modelName: 'User_Areas'
+		sequelize, modelName: 'User_Local_Areas'
 	});
 
 	return UserAreas;
