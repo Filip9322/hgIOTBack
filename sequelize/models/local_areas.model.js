@@ -46,14 +46,20 @@ module.exports = (sequelize) => {
 		local_mail: {
 			type: DataTypes.STRING(100)
 		},
+		local_admin: {
+			type: DataTypes.STRING(100)
+		},
+		local_state: {
+			type: DataTypes.BOOLEAN
+		},
+		local_logo: {
+			type: DataTypes.STRING(255)
+		},
 		map_x: {
 			type: DataTypes.STRING(255)
 		},
 		map_y: {
 			type: DataTypes.STRING(255)
-		},
-		local_state: {
-			type: DataTypes.BOOLEAN
 		},
 		bigo: {
 			type: DataTypes.STRING(255)

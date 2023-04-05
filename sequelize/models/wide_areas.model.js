@@ -31,6 +31,9 @@ module.exports = (sequelize) => {
 		country_wa_term: {
 			type: DataTypes.STRING(100)
 		},
+		wa_logo: {
+			type: DataTypes.STRING(255)
+		}
 		bigo : {
 			type: DataTypes.STRING(255)
 		},

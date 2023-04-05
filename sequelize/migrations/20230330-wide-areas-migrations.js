@@ -17,6 +17,9 @@ module.exports = {
 				type: Sequelize.STRING(100),
 				allowNull: false
 			},
+			wa_logo: {
+				type: Sequelize.STRING(255)
+			}
 			country_id: {
 				type: Sequelize.INTEGER
 			},

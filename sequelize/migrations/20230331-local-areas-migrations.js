@@ -38,14 +38,20 @@ module.exports = {
 			local_mail: {
 				type: Sequelize.STRING(100)
 			},
+			local_admin: {
+				type: Sequelize.STRING(100)
+			},
+			local_state: {
+				type: Sequelize.BOOLEAN
+			},
+			local_logo: {
+				type: Sequelize.STRING(255)
+			},
 			map_x: {
 				type: Sequelize.STRING(255)
 			},
 			map_y: {
 				type: Sequelize.STRING(255)
-			},
-			local_state: {
-				type: Sequelize.BOOLEAN
 			},
 			bigo: {
 				type: Sequelize.STRING(255)
