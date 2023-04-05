@@ -34,17 +34,13 @@ module.exports = (sequelize) => {
 			type: DataTypes.BOOLEAN,
 			allowNull: false
 		},
-		local_CEO: {
-			type: DataTypes.STRING(100)
+		local_company: {
+			type: DataTypes.INTEGER,
+			references: 'Companies',
+			referencesKey: 'id'
 		},
-		local_tel: {
-			type: DataTypes.STRING(100)
-		},
-		local_mob: {
-			type: DataTypes.STRING(100)
-		},
-		local_mail: {
-			type: DataTypes.STRING(100)
+		local_address: {
+			type: DataTypes.STRING(255)
 		},
 		local_admin: {
 			type: DataTypes.STRING(100)

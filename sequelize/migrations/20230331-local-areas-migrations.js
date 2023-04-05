@@ -26,17 +26,13 @@ module.exports = {
 				type: Sequelize.BOOLEAN,
 				allowNull: false
 			},
-			local_CEO: {
-				type: Sequelize.STRING(100)
+			local_company: {
+				type: Sequelize.INTEGER,
+				references: {model: 'Companies', key: 'id'},
+				allowNull: false
 			},
-			local_tel: {
-				type: Sequelize.STRING(100)
-			},
-			local_mob: {
-				type: Sequelize.STRING(100)
-			},
-			local_mail: {
-				type: Sequelize.STRING(100)
+			local_address: {
+				type: Sequelize.STRING(255)
 			},
 			local_admin: {
 				type: Sequelize.STRING(100)
