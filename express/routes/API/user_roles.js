@@ -35,7 +35,7 @@ async function update (req, res) {
 				id: id
 			}
 		});
-		res.status(200).end("Sucessfully Deleted");
+		res.status(200).send("Sucessfully Deleted");
 	} else {
 		res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`)
 	}
@@ -50,7 +50,7 @@ async function remove (req, res) {
 				id: id
 			}
 		});
-		res.status(200).end("Sucessfully Deleted");
+		res.status(200).send("Sucessfully Deleted");
 	} else {
 		res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`)
 	}
