@@ -12,6 +12,15 @@ module.exports = {
       is_deleted: false,
       createdAt: '2023-04-03 00:00:00',
       updatedAt: '2023-04-03 00:00:00'
+      },
+      {
+      id: 2,
+      user_id: 1,
+      role_id: 2,
+      user_mod: 1,
+      is_deleted: false,
+      createdAt: '2023-04-03 00:00:00',
+      updatedAt: '2023-04-03 00:00:00'
       }
     ], {});
 

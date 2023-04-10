@@ -34,8 +34,22 @@ router.post('/', async function(req, res, next) {
 					 *	1. User attached roles
 					 *  2. Roles Names
 					*/
-					//var listRoles = await models.Roles.findOne({where: {}})
-
+					var listRolesbyUser = await models.User_Roles.findAll({where: {user_id: user_reg.id}});
+					var listRoles = [];
+					if(listRolesbyUser){
+						var rolesEntries = [];
+						for(var i = 0; i < listRolesbyUser.length; i++) {
+							var listRolesName   = await models.Roles.findAll({where: { id: listRolesbyUser[i].id}})
+							rolesEntries.push(listRolesName[0]);
+						}
+						for(var i = 0; i < rolesEntries.length; i++) {
+							var body = {
+								"id": rolesEntries[i].id,
+								"role_name": rolesEntries[i].role_name
+							}
+							listRoles.push(body);
+						}
+					}
 					/* Listing User Wide_Areas
 					 *	1. User attached wide areas
 					*/
@@ -47,7 +61,14 @@ router.post('/', async function(req, res, next) {
 					// Update User access_token in DB
 					// TODO: needed the refresh token
 					const update_token = await models.Users.update(UpBody, { where: {id: user_reg.id}});
-					res.status(200).json({"id": user_reg.id, "user_id": user_id,  "access_token": token, "status": `User Authenticated: `});
+					const res_body  = {
+						"id": user_reg.id,
+						"user_id": user_id,
+						"user_roles": listRoles,
+						"access_token": token,
+						"status": `User Authenticated: `
+					};
+					res.status(200).json(res_body);
 				}else {
 					res.status(400).send(`Incorrect username or password.`);
 				}
