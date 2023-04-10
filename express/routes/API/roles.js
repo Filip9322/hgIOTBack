@@ -3,6 +3,7 @@ const { getIdParam } = require('../../helpers');
 
 async function getAll(req, res) {
 	const roles = await models.Roles.findAll();
+	res.status(200).json(roles);
 };
 
 async function getById(req, res){
@@ -16,7 +17,7 @@ async function getById(req, res){
 };
 
 async function create (req, res) {
-	console.log(Obeject.keys(req));
+	console.log(Object.keys(req));
 	if(req.body.id) {
 		res.status(400).send('Bad request: ID should not be provided, since it is determined automatically by the db.');
 	} else {
@@ -43,15 +44,14 @@ async function update(req, res) {
 
 async function remove(req, res) {
 	const id = getIdParam(req);
-
-	// We only accept an UPDATE request if the `:id` param matches the body `id`
 	if (req.body.id === id) {
-		await models.Roles.destroy({
+		var body = { "is_deleted": true };
+		await models.Roles.update(body,{
 			where: {
 				id: id
 			}
 		});
-		res.status(200).end();
+		res.status(200).end("Sucessfully Deleted");
 	} else {
 		res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`);
 	}

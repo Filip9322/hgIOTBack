@@ -45,12 +45,17 @@ async function update(req, res) {
 
 async function remove(req, res) {
 	const id = getIdParam(req);
-	await models.Companies.destroy({
-		where: {
-			id: id
-		}
-	});
-	res.status(200).end();
+	if (req.body.id === id) {
+		var body = { "is_deleted": true};
+		await models.Companies.update(body,{
+			where: {
+				id: id
+			}
+		});
+		res.status(200).end("Sucessfully Deleted");
+	} else {
+		res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`);
+	}
 };
 
 

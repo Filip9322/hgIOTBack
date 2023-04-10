@@ -3,13 +3,13 @@ const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-	class PermissionsRol extends Model {
+	class RolePolicies extends Model {
 		static associate(models) {
 			// associations could be defined in here
 		}
 	}
 
-	PermissionsRol.init({
+	RolePolicies.init({
 		id: {
 			allowNull: false,
 			autoIncrement: true,

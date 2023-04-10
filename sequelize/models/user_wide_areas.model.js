@@ -23,7 +23,7 @@ module.exports = (sequelize) =>  {
 			referencesKey: 'id'
 		},
 		wide_area_id: {
-			type: DataTypes.INTEGER
+			type: DataTypes.INTEGER,
 			references: 'Wide_Areas',
 			referencesKey: 'id'
 		},

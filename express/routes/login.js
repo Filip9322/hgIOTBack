@@ -30,7 +30,22 @@ router.post('/', async function(req, res, next) {
 					const token  = createToken(user_id, user_email);
 					const UpBody = {"access_token" : token};
 
+					/* Listing User roles 
+					 *	1. User attached roles
+					 *  2. Roles Names
+					*/
+					//var listRoles = await models.Roles.findOne({where: {}})
+
+					/* Listing User Wide_Areas
+					 *	1. User attached wide areas
+					*/
+
+					/* Listing User Local Areas
+					 *	1. User attached local areas
+					*/
+
 					// Update User access_token in DB
+					// TODO: needed the refresh token
 					const update_token = await models.Users.update(UpBody, { where: {id: user_reg.id}});
 					res.status(200).json({"id": user_reg.id, "user_id": user_id,  "access_token": token, "status": `User Authenticated: `});
 				}else {
@@ -62,9 +77,10 @@ router.post('/register', async function(req, res, next) {
 		var user_email = req.body.user_email;
 		
 		// Validate if user already exist by User_ID
-		var user_reg = await models.Users.findOne({ where: { user_ID: user_id } });
+		var user_reg    = await models.Users.findOne({ where: { user_ID: user_id } });
+		var check_email = await models.Users.findOne({ where: { user_ID: user_email } });
 
-		if(user_id && user_reg === null){
+		if(user_id && user_reg === null && check_email === null){
 			
 			// Encrypt user password
 			var hashPass = await hashPassword(req.body.user_pw);

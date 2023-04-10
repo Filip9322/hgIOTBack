@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
 		},
 		wa_logo: {
 			type: DataTypes.STRING(255)
-		}
+		},
 		bigo : {
 			type: DataTypes.STRING(255)
 		},

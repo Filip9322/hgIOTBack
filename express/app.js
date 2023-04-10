@@ -5,9 +5,11 @@ var express = require('express');
 var createError  = require('http-errors');
 var cookieParser = require('cookie-parser');
 
-var indexRouter    = require('./routes/index');
-var usersRouter    = require('./routes/API/user');
-var companyRouter  = require('./routes/API/company');
+var indexRouter      = require('./routes/index');
+var usersRouter      = require('./routes/API/user');
+var companiesRouter  = require('./routes/API/company');
+var rolesRouter      = require('./routes/API/roles');
+var userRolesRouter  = require('./routes/API/user_roles');
 var userRegLogin   = require('./routes/login');
 var userRegLogout  = require('./routes/logout');
 
@@ -31,8 +33,9 @@ app.use('/logout', userRegLogout);
 // API routes
 const routes = {
   users: usersRouter,
-  company: companyRouter
-  
+  companies: companiesRouter,
+  roles: rolesRouter,
+  user_roles: userRolesRouter 
 };
 
 // We define the standart REST API for each route ( if they exist )

@@ -16,12 +16,15 @@ const sequelize = new Sequelize(
 );
 
 const modelDefiners = [
-    require('./models/company.model'),
     require('./models/user.model'),
     require('./models/role.model'),
-    require('./models/role_policies.model'),
-    require('./models/user_local_areas.model'),
+    require('./models/company.model'),
+    require('./models/wide_areas.model'),
+    require('./models/user_roles.model'),
     require('./models/user_wide_areas.model'),
+    require('./models/local_areas.model'),
+    require('./models/user_local_areas.model'),
+    require('./models/role_policies.model'),
     require('./models/role_modules.model')
     // All models could be listed here
 ];
