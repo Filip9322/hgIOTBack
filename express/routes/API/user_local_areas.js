@@ -2,7 +2,7 @@ const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll(req, res) {
-  const user_local_areas = await models.user_local_areas.findAll();
+  const user_local_areas = await models.user_local_areas.findAll({where: {is_deleted: false}});
   res.status(200).json(user_local_areas);
 }
 
@@ -33,7 +33,7 @@ async function update(req, res) {
   			id: id
   		}
   	});
-  	res.status(200).send('Sucessfully Deleted');
+  	res.status(200).end('Sucessfully Deleted');
   } else {
   	res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`);
   }
@@ -42,12 +42,13 @@ async function update(req, res) {
 async function remove(req, res) {
   const id = getIdParam(req);
   if (req.body.id === id){
-  	await models.User_Local_Areas.update(req.body, {
+    var body = { "is_deleted": true};
+  	await models.User_Local_Areas.update(body, {
   		where: {
   			id: id
   		}
   	});
-  	res.status(200).send('Sucessfully Deleted');
+  	res.status(200).end('Sucessfully Deleted');
   } else {
   	res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`);
   }

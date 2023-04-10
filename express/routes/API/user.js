@@ -2,7 +2,7 @@ const { models }     = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll (req, res) {
-	const users = await models.Users.findAll();
+	const users = await models.Users.findAll({where: {is_deleted: false}});
 	res.status(200).json(users);
 };
 

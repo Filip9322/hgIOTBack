@@ -10,6 +10,8 @@ var usersRouter      = require('./routes/API/user');
 var companiesRouter  = require('./routes/API/company');
 var rolesRouter      = require('./routes/API/roles');
 var userRolesRouter  = require('./routes/API/user_roles');
+var userWAreasRouter = require('./routes/API/user_wide_areas');
+var userLAreasRouter = require('./routes/API/user_local_areas');
 var userRegLogin   = require('./routes/login');
 var userRegLogout  = require('./routes/logout');
 
@@ -35,7 +37,9 @@ const routes = {
   users: usersRouter,
   companies: companiesRouter,
   roles: rolesRouter,
-  user_roles: userRolesRouter 
+  user_roles: userRolesRouter,
+  user_wide_areas: userWAreasRouter,
+  user_local_areas: userLAreasRouter
 };
 
 // We define the standart REST API for each route ( if they exist )

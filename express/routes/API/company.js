@@ -3,7 +3,7 @@ const { getIdParam } = require('../../helpers');
 
 
 async function getAll (req, res) {
-	const companies = await models.Companies.findAll();
+	const companies = await models.Companies.findAll({where: {is_deleted: false}});
 	res.status(200).json(companies);
 };
 

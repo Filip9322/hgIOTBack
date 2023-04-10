@@ -2,7 +2,7 @@ const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll(req, res) {
-	const roles = await models.Role_Policy.findAll();
+	const roles = await models.Role_Policy.findAll({where: {is_deleted: false}});
 }
 
 async function getById(req, res) {
@@ -42,14 +42,14 @@ async function update (req, res) {
 
 async function remove (req, res) {
 	const id = getIdParam(req);
-
-	// We only accept an UPDATE request if the `:id` param mateches the body `id`
 	if(req.body.id === id) {
-		await models.Role_Policy.destroy( req.body,{
+    var body = { "is_deleted": true };
+		await models.Role_Policy.update( body,{
 			where: {
 				id: id
 			}
 		});
+    res.status(200).end('Sucessfully Deleted');
 	} else{
 		res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`);
 	}
