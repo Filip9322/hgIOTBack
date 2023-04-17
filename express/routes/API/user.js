@@ -35,7 +35,7 @@ async function update(req, res) {
 				id: id
 			}
 		});
-		res.status(200).end();
+		res.status(200).end('Sucessfully Updated');
 	} else {
 		res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id}).`);
 	}

@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 
 var indexRouter      = require('./routes/index');
 var usersRouter      = require('./routes/API/user');
+var wideAreasRouter  = require('./routes/API/wide_areas');
 var companiesRouter  = require('./routes/API/company');
 var rolesRouter      = require('./routes/API/roles');
 var userRolesRouter  = require('./routes/API/user_roles');
@@ -29,15 +30,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Register, Login and Authenticate User
+let corsOptions = {
+    origin: 'http://localhost:3000/users/',
+    credentials: true
+}
 app.use(cors());
 app.use('/login', userRegLogin);
 app.use('/logout', userRegLogout);
 // API routes
 const routes = {
   users: usersRouter,
-  companies: companiesRouter,
   roles: rolesRouter,
+  companies: companiesRouter,
   user_roles: userRolesRouter,
+  wide_areas: wideAreasRouter,
   user_wide_areas: userWAreasRouter,
   user_local_areas: userLAreasRouter
 };
