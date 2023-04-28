@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var indexRouter      = require('./routes/index');
 var usersRouter      = require('./routes/API/user');
 var wideAreasRouter  = require('./routes/API/wide_areas');
+var localAreasRouter = require('./routes/API/local_areas');
 var companiesRouter  = require('./routes/API/company');
 var rolesRouter      = require('./routes/API/roles');
 var userRolesRouter  = require('./routes/API/user_roles');
@@ -44,6 +45,7 @@ const routes = {
   companies: companiesRouter,
   user_roles: userRolesRouter,
   wide_areas: wideAreasRouter,
+  local_areas: localAreasRouter,
   user_wide_areas: userWAreasRouter,
   user_local_areas: userLAreasRouter
 };
