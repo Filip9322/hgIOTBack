@@ -44,7 +44,7 @@ const getUserWideAreas = async (user_ID = 0) => {
     let listWideAreas = [];
     for (let i = 0 ; i < listWideAreasByUser.length; i++) {
       let wideArea = await models.Wide_Areas.findAll({where: {id: listWideAreasByUser[i].wide_area_id}});
-      if(wideArea) listWideAreas.push(wideArea);
+      if(wideArea) listWideAreas.push(wideArea[0]);
     }
     return listWideAreas;
 
@@ -61,7 +61,7 @@ const getUserLocalAreas = async (user_ID = 0) => {
     let listLocalAreas = [];
     for(let i=0; i < listLocalAreasbyUser.length; i++) {
       let localArea = await models.Local_Areas.findAll({where: {id: listLocalAreasbyUser[i].local_area_id}});
-      if(localArea) listLocalAreas.push(localArea);
+      if(localArea) listLocalAreas.push(localArea[0]);
     }
     return listLocalAreas;
 

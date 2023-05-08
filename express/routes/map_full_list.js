@@ -4,16 +4,16 @@ const { models } = require('../../sequelize');
 const { getUserRoles, getUserIDfromString,
         getUserWideAreas, getUserLocalAreas  } = require('./commons');
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
   res.status(404).send('404 - Not found');
 });
 
-router.post('/', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
   try {
     /* Validate body input */
-    var user_name = String(req.body.user_ID).toLowerCase();
-    var access_token = req.body.accessToken;
-    
+    var user_name = req.headers.user_id;
+    var access_token = req.headers.access_token;
+    console.log(req.headers);
     var user_id = 0, roles = {};
     var wide_areas  = {}, local_areas = {};
 
