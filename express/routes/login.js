@@ -4,6 +4,8 @@ const { models } = require('../../sequelize');
 const bcrypt     = require('bcrypt');
 const jwt        = require('jsonwebtoken');
 const userRouter = require('./API/user');
+const { getUserRoles, getUserIDfromString,
+        getUserWideAreas, getUserLocalAreas  } = require('./commons');
 
 router.get('/', function(req, res, next) {
   res.status(404).send('404 - Not found');
@@ -30,63 +32,35 @@ router.post('/', async function(req, res, next) {
         /* Return Access_token */
         const token  = createToken(user_id, user_email);
         const UpBody = {"access_token" : token};
+        var roles = {}, wide_areas  = {}, local_areas = {};
 
-        /* Listing User roles 
-         *	1. User attached roles
-         *  2. Roles Names
-        */
-        var listRolesbyUser = await models.User_Roles.findAll({where: {user_id: user_reg.id}});
-        var listRoles = [];
-        if(listRolesbyUser){
-          var rolesEntries = [];
-          for(var i = 0; i < listRolesbyUser.length; i++) {
-            var listRolesName   = await models.Roles.findAll({where: { id: listRolesbyUser[i].id}})
-            rolesEntries.push(listRolesName[0]);
-          }
-          for(var i = 0; i < rolesEntries.length; i++) {
-            var body = {
-              "id": rolesEntries[i].id,
-              "role_name": rolesEntries[i].role_name
-            }
-            listRoles.push(body);
-          }
-        }
-        
-        /* Listing User Wide_Areas
-         *	1. User attached wide areas
-        */
-        var listUserWAreas = await models.User_Wide_Areas.findAll({where: {user_id: user_reg.id}});
-        var listWAreas = [];
-        for(var i = 0; i < listUserWAreas.length; i++) {
-        	var body = {
-               "id": listUserWAreas[i].id,
-               "wide_area_id": listUserWAreas[i].wide_area_id
-        	};
-        	listWAreas.push(body);
-        }
+        // Check user roles
+        const getRoles = await getUserRoles(user_id);
+        if(roles) {
+          roles = getRoles;
+        } else res.status(400).send(`Bad request: User has no roles registered`);
 
-        /* Listing User Local Areas
-         *	1. User attached local areas
-        */
-        var listUserLAreas = await models.User_Local_Areas.findAll({where: {user_id: user_reg.id}});
-        var listLAreas = [];
-        for(var i = 0; i < listUserLAreas.length; i++){
-           var body = {
-           	   "id": listUserWAreas[i].id,
-           	   "local_area_id": listUserLAreas[i].local_area_id
-           };
-           listLAreas.push(body);
-        }
+        // Search wide Areas that user have access
+        const getWideAreas = await getUserWideAreas(user_id);
+        if(getWideAreas) {
+          wide_areas = getWideAreas;
+        } else res.status(400).send(`Bad request: User has no wide areas associations`);
+
+        // Search local Areas that user have access
+        const getLocalAreas = await getUserLocalAreas(user_id);
+        if(getLocalAreas) {
+          local_areas = getLocalAreas;
+        } else res.status(400).send(`Bad request: User has no local areas associations`);
 
         /* Update User access_token in DB
-         * TODO: needed the refresh token */
+         * TODO: needed the refresh token, and probably not need to verify areas in here */
         const update_token = await models.Users.update(UpBody, { where: {id: user_reg.id}});
         const res_body  = {
             "id": user_reg.id,
             "user_id": user_id,
-            "user_roles": listRoles,
-            "user_wide_areas": listWAreas,
-            "user_local_areas": listLAreas,
+            "user_roles": roles,
+            "user_wide_areas": wide_areas,
+            "user_local_areas": local_areas,
             "access_token": token,
             "status": `User Authenticated: `
         };

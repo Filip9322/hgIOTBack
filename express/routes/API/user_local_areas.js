@@ -2,13 +2,13 @@ const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll(req, res) {
-  const user_local_areas = await models.user_local_areas.findAll({where: {is_deleted: false}});
+  const user_local_areas = await models.User_Local_Areas.findAll({where: {is_deleted: false}});
   res.status(200).json(user_local_areas);
 }
 
 async function getById(req, res) {
   const id = getIdParam('req: ', req);
-  const user_local_areas = await models.user_local_areas.findByPk(id);
+  const user_local_areas = await models.User_Local_Areas.findByPk(id);
   if(user_local_areas) {
   	res.status(200).json(user_local_areas);
   } else {

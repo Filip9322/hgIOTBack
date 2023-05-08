@@ -14,8 +14,9 @@ var rolesRouter      = require('./routes/API/roles');
 var userRolesRouter  = require('./routes/API/user_roles');
 var userWAreasRouter = require('./routes/API/user_wide_areas');
 var userLAreasRouter = require('./routes/API/user_local_areas');
-var userRegLogin   = require('./routes/login');
-var userRegLogout  = require('./routes/logout');
+var mapListAllAreas  = require('./routes/map_full_list');
+var userRegLogin     = require('./routes/login');
+var userRegLogout    = require('./routes/logout');
 
 var app = express();
 
@@ -35,9 +36,13 @@ let corsOptions = {
     origin: 'http://localhost:3000/users/',
     credentials: true
 }
+
+// Custom REST API ENDPOINTS
 app.use(cors());
 app.use('/login', userRegLogin);
 app.use('/logout', userRegLogout);
+app.use('/map_list', mapListAllAreas);
+
 // API routes
 const routes = {
   users: usersRouter,

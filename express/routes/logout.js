@@ -36,7 +36,7 @@ router.post('/', async function(req, res, next) {
 			}
 
 		}else{
-			res.status(400).send(`Bad request: param user_id and param access_token are required`);
+			res.status(400).send(`Bad request: param User ID and param Access Token are required`);
 		}
 	} catch(err) {
 		next(err);
