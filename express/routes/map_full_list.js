@@ -15,7 +15,7 @@ router.get('/', async function(req, res, next) {
     var access_token = req.headers.access_token;
     console.log(req.headers);
     var user_id = 0, roles = {};
-    var wide_areas  = {}, local_areas = {};
+    var wide_areas  = {}, local_areas = {}, local_per_warea = [];
 
     if (user_name && access_token){
       // Get User ID
@@ -41,6 +41,18 @@ router.get('/', async function(req, res, next) {
       if(getLocalAreas) {
         local_areas = getLocalAreas;
       } else res.status(400).send(`Bad request: User has no local areas associations`);
+
+      // Local Areas per Wide Area
+      wide_areas.map(warea => {
+        let localsAreas = [];
+        local_areas.some(larea => {
+          if(larea.wide_area_id == warea.id){
+            localsAreas.push(larea);
+          }
+        });
+        Object.assign(warea.dataValues,{locals : localsAreas});
+      });
+      console.log(Object.keys(wide_areas[0].dataValues));
 
       // Summay and response
       let body = {
