@@ -22,7 +22,11 @@ module.exports = (sequelize) => {
 			references: 'Users',
 			referencesKey: 'id'
 		},
-		local_area_id: DataTypes.INTEGER,
+		local_area_id: {
+      type: DataTypes.INTEGER,
+      references: 'Local_Areas',
+      referencesKey: 'id'
+    },
 		user_mod:   {
 			type: DataTypes.INTEGER,
 			references: 'Users',

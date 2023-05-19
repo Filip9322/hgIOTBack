@@ -16,6 +16,7 @@ module.exports = {
 			},
 			local_area_id: {
 			 	type: Sequelize.INTEGER,
+        references: {model: 'Local_Areas', key: 'id'},
 			 	allowNull: false
 			},
 			user_mod: {
