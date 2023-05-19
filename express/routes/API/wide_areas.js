@@ -28,7 +28,7 @@ async function create (req, res) {
 }
 
 async function update (req, res) {
-  const id = getIdParam(id);
+  const id = getIdParam(req);
   // We only accept an UPDATE request if the `:id`  param matches the body `id` froom the body
   if (req.body.id === id) {
     await models.Wide_Areas.update(req.body, {
