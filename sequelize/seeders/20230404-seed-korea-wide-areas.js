@@ -15,7 +15,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 2,
@@ -28,7 +28,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 3,
@@ -41,7 +41,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 4,
@@ -54,7 +54,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 5,
@@ -67,7 +67,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 6,
@@ -80,7 +80,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 7,
@@ -93,7 +93,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 8,
@@ -106,7 +106,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 9,
@@ -119,7 +119,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 10,
@@ -132,7 +132,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 11,
@@ -145,7 +145,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 12,
@@ -158,7 +158,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 13,
@@ -171,7 +171,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 14,
@@ -184,7 +184,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 15,
@@ -197,7 +197,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 16,
@@ -210,7 +210,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		},
 		{
 			id: 17,
@@ -223,7 +223,7 @@ module.exports = {
 			user_mod: 1,
 			is_deleted: false,
 			createdAt: '2023-04-04 00:00:00',
-      		updatedAt: '2023-04-04 00:00:00'
+      updatedAt: '2023-04-04 00:00:00'
 		}
 		], {});
 
