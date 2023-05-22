@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 
 var indexRouter      = require('./routes/index');
 var usersRouter      = require('./routes/API/user');
-var districtsRouter  = require('./routes/districts');
 var wideAreasRouter  = require('./routes/API/wide_areas');
 var localAreasRouter = require('./routes/API/local_areas');
 var companiesRouter  = require('./routes/API/company');
@@ -18,7 +17,6 @@ var userLAreasRouter = require('./routes/API/user_local_areas');
 var mapListAllAreas  = require('./routes/map_full_list');
 var userRegLogin     = require('./routes/login');
 var userRegLogout    = require('./routes/logout');
-var userDistrictsRouter = require('./routes/API/user_districts');
 
 var app = express();
 
@@ -49,14 +47,12 @@ app.use('/map_list', mapListAllAreas);
 const routes = {
   users: usersRouter,
   roles: rolesRouter,
-  districts: districtsRouter,
   companies: companiesRouter,
   user_roles: userRolesRouter,
   wide_areas: wideAreasRouter,
   local_areas: localAreasRouter,
   user_wide_areas: userWAreasRouter,
-  user_local_areas: userLAreasRouter,
-  user_districts: userDistrictsRouter
+  user_local_areas: userLAreasRouter
 };
 
 // We define the standart REST API for each route ( if they exist )
