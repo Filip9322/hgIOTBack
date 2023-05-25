@@ -1,24 +1,25 @@
 'use strict';
-/** @type {import ('sequelize-cli).Migration')} */
-
+/** @type {import ('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('LAreas_Device_Subscriptions',{
+  async up (queryInterface, Sequelize) {
+    await queryInterface.createTable('Device_Types',{
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      larea_id: {
-        type: Sequelize.INTEGER,
-        references: {model: 'Local_Areas', key: 'id'},
+      type_name: {
+        type: Sequelize.STRING(100),
         allowNull: false
       },
-      device_type_id: {
-        type: Sequelize.INTEGER,
-        references: {model: 'Device_Types', key: 'id'},
+      type_name_kr: {
+        type: Sequelize.STRING(100),
         allowNull: false
+      },
+      dv_type_icon: {
+        type: Sequelize.STRING(255),
+        allowNull: true
       },
       user_mod: {
         type: Sequelize.INTEGER,
@@ -39,7 +40,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('LAreas_Device_Subscriptions')
+  async down (queryInterface, Sequelize){
+    await queryInterface.dropTable('Device_Types')
   }
 }
