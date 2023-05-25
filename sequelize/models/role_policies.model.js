@@ -32,6 +32,6 @@ module.exports = (sequelize) => {
 		},
 		is_deleted: DataTypes.BOOLEAN
 	},{
-		sequelize, modelName: 'Role_Policy'
+		sequelize, modelName: 'Role_Policies'
 	});
 }

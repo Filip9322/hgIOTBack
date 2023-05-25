@@ -24,7 +24,7 @@ module.exports = {
       }
     ], {});
 
-    await queryInterface.bulkInsert('Role_Policy', [
+    await queryInterface.bulkInsert('Role_Policies', [
     {
       id: 1,
       role_id: 1,
@@ -277,8 +277,8 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('User_Roles', null, {});
-    await queryInterface.bulkDelete('Role_Policy', null, {});
     await queryInterface.bulkDelete('Role_Modules', null, {});
+    await queryInterface.bulkDelete('Role_Policies', null, {});
     await queryInterface.bulkDelete('User_Wide_Areas', null, {});
     await queryInterface.bulkDelete('User_Local_Areas', null, {});
   }
