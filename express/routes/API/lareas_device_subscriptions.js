@@ -2,10 +2,7 @@ const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll (req, res) {
-  const lareas_device_subs = await models.LAreas_Device_Subscriptions.findAll(
-    where: {
-      is_deleted: false
-    });
+  const lareas_device_subs = await models.LAreas_Device_Subscriptions.findAll({where: {is_deleted: false}});
   res.status(200).json(lareas_device_subs);
 }
 

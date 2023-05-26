@@ -17,6 +17,7 @@ var userLAreasRouter = require('./routes/API/user_local_areas');
 var mapListAllAreas  = require('./routes/map_full_list');
 var userRegLogin     = require('./routes/login');
 var userRegLogout    = require('./routes/logout');
+var lareasDevSubsRouter = require('./routes/API/lareas_device_subscriptions')
 
 var app = express();
 
@@ -52,7 +53,8 @@ const routes = {
   wide_areas: wideAreasRouter,
   local_areas: localAreasRouter,
   user_wide_areas: userWAreasRouter,
-  user_local_areas: userLAreasRouter
+  user_local_areas: userLAreasRouter,
+  lareas_dev_subscriptions: lareasDevSubsRouter
 };
 
 // We define the standart REST API for each route ( if they exist )

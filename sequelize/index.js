@@ -25,7 +25,9 @@ const modelDefiners = [
     require('./models/local_areas.model'),
     require('./models/user_local_areas.model'),
     require('./models/role_policies.model'),
-    require('./models/role_modules.model')
+    require('./models/role_modules.model'),
+    require('./models/lareas_device_subscriptions.model'),
+    require('./models/devices_types.model')
     // All models could be listed here
 ];
 
