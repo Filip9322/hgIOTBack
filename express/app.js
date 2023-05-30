@@ -17,6 +17,7 @@ var userLAreasRouter = require('./routes/API/user_local_areas');
 var mapListAllAreas  = require('./routes/map_full_list');
 var userRegLogin     = require('./routes/login');
 var userRegLogout    = require('./routes/logout');
+var devTypesRouter   = require('./routes/API/device_types');
 var lareasDevSubsRouter = require('./routes/API/lareas_device_subscriptions')
 
 var app = express();
@@ -54,6 +55,7 @@ const routes = {
   local_areas: localAreasRouter,
   user_wide_areas: userWAreasRouter,
   user_local_areas: userLAreasRouter,
+  device_types: devTypesRouter,
   lareas_dev_subscriptions: lareasDevSubsRouter
 };
 

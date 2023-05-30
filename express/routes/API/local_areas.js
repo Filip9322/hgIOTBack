@@ -2,7 +2,27 @@ const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll (req, res) {
-  const local_areas = await models.Local_Areas.findAll({where: {is_deleted: false}});
+  const local_areas = await models.Local_Areas.findAll(
+    {where: {is_deleted: false}});
+  // Get all device subs by Local Area
+  const list_device_subs = await models.LAreas_Device_Subscriptions.findAll({
+    where: {is_deleted: false}
+  }).then((res) => {
+    // Group devices type per local_area
+    let arrayByLAreaID = res.reduce((array,row) =>{
+      array[row.dataValues.larea_id] = array[row.dataValues.larea_id] || [];
+      array[row.dataValues.larea_id].push(row.dataValues.device_type_id);
+      return array;
+    }, Object.create(null));
+
+    // Create new key into local_area row with the id of the devices
+    local_areas.map(larea=>{
+      if(arrayByLAreaID[larea.dataValues.id]){
+        Object.assign(larea.dataValues,{ subs: arrayByLAreaID[larea.dataValues.id]});
+      }
+    });
+  });
+
   res.status(200).json(local_areas);
 }
 

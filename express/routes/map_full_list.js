@@ -13,7 +13,7 @@ router.get('/', async function(req, res, next) {
     /* Validate body input */
     var user_name = req.headers.user_id;
     var access_token = req.headers.access_token;
-    console.log(req.headers);
+
     var user_id = 0, roles = {};
     var wide_areas  = {}, local_areas = {}, local_per_warea = [];
 
@@ -52,7 +52,6 @@ router.get('/', async function(req, res, next) {
         });
         Object.assign(warea.dataValues,{locals : localsAreas});
       });
-      console.log(Object.keys(wide_areas[0].dataValues));
 
       // Summay and response
       let body = {
