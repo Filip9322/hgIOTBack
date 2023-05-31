@@ -3,7 +3,7 @@
 
 // Create bulk Insert Array play with the Array properties to create Identical Objects, but
 // changing the id and local area id (NOT ALL to prove only is called if registered)
-let bulkInsertArray = Array.apply(null, Array(35)).map((row,i)=>{
+let bulkInsertArray = Array.apply(null, Array(25)).map((row,i)=>{
   let rowObj = {};
   if(i < 21) {
     rowObj = {

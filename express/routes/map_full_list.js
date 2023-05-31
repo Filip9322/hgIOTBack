@@ -44,14 +44,28 @@ router.get('/', async function(req, res, next) {
 
       // Local Areas per Wide Area
       wide_areas.map(warea => {
+        let devicesSubs = [];
         let localsAreas = [];
+
         local_areas.some(larea => {
+          // Sort local Areas per wide Area 
           if(larea.wide_area_id == warea.id){
             localsAreas.push(larea);
+            // Search and extract device unique id , for all local areas per wide area
+            larea.dataValues.subs.map(sub => devicesSubs.push(sub));
           }
         });
+
+        // Attach local_areas in Object.locals
         Object.assign(warea.dataValues,{locals : localsAreas});
+        
+        // Attach local device subscripcions summary by Wide Area
+        console.log(devicesSubs);
+        let WA_subs = [...new Set(devicesSubs)];
+        Object.assign(warea.dataValues,{subs: WA_subs});
       });
+
+
 
       // Summay and response
       let body = {

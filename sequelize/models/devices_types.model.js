@@ -3,7 +3,9 @@ const { Model, DataTypes } = require('sequelize');
 
 module.exports = sequelize => {
   class DeviceTypes extends Model {
+    static associate(models){
     // associations could be defined in here
+    }
   }
 
   DeviceTypes.init({
@@ -30,10 +32,7 @@ module.exports = sequelize => {
       referencesKey: 'id'
     },
     is_deleted: DataTypes.BOOLEAN
-  },
-  {
-    sequelize, modelName: 'DeviceTypes'
+  },{
+    sequelize, modelName: 'Device_Types'
   });
-
-  return DeviceTypes;
 }

@@ -55,14 +55,34 @@ const getUserWideAreas = async (user_ID = 0) => {
   *  1. User attached local areas
  */
 const getUserLocalAreas = async (user_ID = 0) => {
-  const listLocalAreasbyUser = await models.User_Local_Areas.findAll({where: {user_id: user_ID}});
+  // Get user local areas
+  const listLocalAreasbyUser = await models.User_Local_Areas.findAll(
+    {where: {user_id: user_ID, is_deleted: false}});
 
   if(listLocalAreasbyUser) {
     let listLocalAreas = [];
     for(let i=0; i < listLocalAreasbyUser.length; i++) {
-      let localArea = await models.Local_Areas.findAll({where: {id: listLocalAreasbyUser[i].local_area_id}});
-      if(localArea) listLocalAreas.push(localArea[0]);
+      
+      // Get Local Areas by Matching IDs
+      let localArea = await models.Local_Areas.findAll(
+        {where: {id: listLocalAreasbyUser[i].local_area_id, is_deleted: false}});
+
+      if(localArea) {
+        listLocalAreas.push(localArea[0]);
+        
+        /*---Attaching Device subscriptions by local Area ---*/
+        const list_device_subs = await models.LAreas_Device_Subscriptions.findAll({
+          where: { larea_id: localArea[0].id, is_deleted: false}
+        }).then((res)=>{
+          let subs = [];
+          res.map(sub =>{
+            subs.push(sub.dataValues.device_type_id);
+          });
+          Object.assign(localArea[0].dataValues, {subs: subs});
+        });
+      }
     }
+
     return listLocalAreas;
 
   } else return null;
