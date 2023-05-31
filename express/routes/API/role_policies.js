@@ -6,7 +6,7 @@ async function getAll(req, res) {
 }
 
 async function getById(req, res) {
-	const id = getIdParam('req: ', req);
+	const id = getIdParam(req);
 	const permissiosRol = await models.Role_Policies.findByPk(id);
 	if(permissiosRol) {
 		res.status(200).json(permissiosRol);

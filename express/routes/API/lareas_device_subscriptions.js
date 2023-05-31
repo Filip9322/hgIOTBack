@@ -7,7 +7,7 @@ async function getAll (req, res) {
 }
 
 async function getById(req, res) {
-  const id = getIdParam('req: ', req);
+  const id = getIdParam(req);
   const lareas_device_subs = await models.LAreas_Device_Subscriptions.findByPk(id);
 
   if (lareas_device_subs) {

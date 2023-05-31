@@ -2,8 +2,10 @@ const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll (req, res) {
+  // Search for all Local Areas not deleted
   const local_areas = await models.Local_Areas.findAll(
     {where: {is_deleted: false}});
+
   // Get all device subs by Local Area
   const list_device_subs = await models.LAreas_Device_Subscriptions.findAll({
     where: {is_deleted: false}
@@ -15,7 +17,7 @@ async function getAll (req, res) {
       return array;
     }, Object.create(null));
 
-    // Create new key into local_area row with the id of the devices
+    // Create new key into local_are(row) with the id of the devices
     local_areas.map(larea=>{
       if(arrayByLAreaID[larea.dataValues.id]){
         Object.assign(larea.dataValues,{ subs: arrayByLAreaID[larea.dataValues.id]});
@@ -27,11 +29,23 @@ async function getAll (req, res) {
 }
 
 async function getById (req, res) {
-  const id = getIdParam('req: ', req);
-  const local_areas = await models.Local_Areas.findByPk(id);
+  const _id = getIdParam(req);
+  const local_area = await models.Local_Areas.findByPk(_id);
 
-  if(local_areas) {
-    res.status(200).json(local_areas);
+  if(local_area) {
+    // Searc for device subscriptions in the area
+    const list_device_subs = await models.LAreas_Device_Subscriptions.findAll({
+      where: { larea_id: _id}
+    }).then((res) =>{
+      let subs = [];
+      res.map(sub => {
+        // Push device ID into Array
+        subs.push(sub.dataValues.device_type_id);
+      })
+      // Attach array into main local area object
+      Object.assign(local_area.dataValues, {subs: subs});
+    });
+    res.status(200).json(local_area);
   } else {
     res.status(404).send('404 - Not found');
   }

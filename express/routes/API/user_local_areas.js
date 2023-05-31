@@ -7,7 +7,7 @@ async function getAll(req, res) {
 }
 
 async function getById(req, res) {
-  const id = getIdParam('req: ', req);
+  const id = getIdParam(req);
   const user_local_areas = await models.User_Local_Areas.findByPk(id);
   if(user_local_areas) {
   	res.status(200).json(user_local_areas);

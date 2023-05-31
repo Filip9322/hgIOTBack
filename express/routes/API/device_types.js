@@ -8,7 +8,7 @@ async function getAll (req, res) {
 }
 
 async function getById(req, res) {
-  const id = getIdParam('req: ', req);
+  const id = getIdParam(req);
   const device_types = await models.DeviceTypes.findByPk(id);
 
   if (device_types) {

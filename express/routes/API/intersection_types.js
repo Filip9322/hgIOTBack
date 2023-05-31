@@ -7,7 +7,7 @@ async function getAll(req, res) {
 }
 
 async function getById(req, res) {
-  const id = getIdParam('req: ', req);
+  const id = getIdParam(req);
   const inter_types = await models.IntersectionTypes.findByPk(id);
 
   if(inter_types){

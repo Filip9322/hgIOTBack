@@ -7,7 +7,7 @@ async function getAll(req, res) {
 };
 
 async function getById(req, res){
-	const id = getIdParam('req: ', req);
+	const id = getIdParam(req);
 	const roles = await models.Roles.findByPk(id);
 	if(roles) {
 		res.status(200).json(roles);

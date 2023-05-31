@@ -8,7 +8,7 @@ async function getAll (req, res) {
 
 
 async function getById(req, res) {
-	const id = getIdParam('req: ',req);
+	const id = getIdParam(req);
 	const users = await models.Users.findByPk(id);
 	if(users) {
 		res.status(200).json(users);

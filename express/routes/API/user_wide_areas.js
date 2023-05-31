@@ -7,7 +7,7 @@ async function getAll(req, res) {
 }
 
 async function getById(req, res) {
-  const id = getIdParam('req: ', req);
+  const id = getIdParam(req);
   const user_wide_areas = await models.User_Wide_Areas.findByPk(id);
   if(user_wide_areas) {
   	res.status(400).json(user_wide_areas);
