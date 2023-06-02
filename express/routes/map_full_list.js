@@ -60,7 +60,6 @@ router.get('/', async function(req, res, next) {
         Object.assign(warea.dataValues,{locals : localsAreas});
         
         // Attach local device subscripcions summary by Wide Area
-        console.log(devicesSubs);
         let WA_subs = [...new Set(devicesSubs)];
         Object.assign(warea.dataValues,{subs: WA_subs});
       });

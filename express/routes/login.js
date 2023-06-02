@@ -130,6 +130,36 @@ router.post('lost_password', async function(req, res, next) {
   // TODO Functionality to recover password
 });
 
+/* END POINT to confirm user is admin -------*/
+router.get('/:user', async (req, res, next) => {
+  const user_name  = req.params.user;
+  console.log(user_name);
+
+  const getUserID  = await models.Users.findOne({ 
+    where: {user_ID : user_name}}
+  );
+
+  // Get user Roles and search for admin Rol
+  let is_admin = false;
+  const user_roles = await models.User_Roles.findAll(
+    {where: {user_id: getUserID.dataValues.id}}
+  ).then(roles => {
+    if(roles){
+      roles.map(rol =>{
+        if(rol.dataValues.id === 1){
+          is_admin = true;
+        }
+      });
+      is_admin ?
+        res.status(200).json(true)  :
+        res.status(403).json('403 - Access Forbidden, Only Admin Users')
+
+    }else{
+      res.status(403).json('403 - User not Found');
+    }
+  });
+});
+
 async function hashPassword(plaintextPassword){
   const hash = await bcrypt.hash(plaintextPassword,10);
   return hash;
