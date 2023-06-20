@@ -2,28 +2,34 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = sequelize => {
-  class Intersection_Types extends Model {
-
+  class Building_Controllers extends Model {
     static associate (models) {
-      // associations could be defined in here
+      // asssociations could be defined in here
     }
   }
 
-  Intersection_Types.init({
+  Building_Controllers.init({
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    inter_type_draw: {
-      type: DataTypes.STRING(255)
-    },
-    inter_type_name: {
-      type: DataTypes.STRING(100),
+    bd_type: {
+      type: DataTypes.INTEGER,
       allowNull: false
     },
-    inter_type_number_devices: {
+    bd_type_name: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    bd_device_type_id: {
+      type: DataTypes.INTEGER,
+      references: 'Device_Types',
+      referencesKey: 'id',
+      allowNull: false
+    },
+    bd_number_floors: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -33,9 +39,9 @@ module.exports = sequelize => {
       referencesKey: 'id'
     },
     is_deleted: DataTypes.BOOLEAN
-  }, {
-    sequelize, modelName: 'Intersection_Types'
+  },{
+    sequelize, modelName: 'Building_Controllers'
   });
 
-  return Intersection_Types;
+  return Building_Controllers;
 }
