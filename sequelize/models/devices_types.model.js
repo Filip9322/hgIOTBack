@@ -2,13 +2,13 @@
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = sequelize => {
-  class DeviceTypes extends Model {
+  class Device_Types extends Model {
     static associate(models){
     // associations could be defined in here
     }
   }
 
-  DeviceTypes.init({
+  Device_Types.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -35,4 +35,6 @@ module.exports = sequelize => {
   },{
     sequelize, modelName: 'Device_Types'
   });
+
+  return Device_Types;
 }

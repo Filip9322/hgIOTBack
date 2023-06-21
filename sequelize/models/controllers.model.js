@@ -1,0 +1,111 @@
+'use strict';
+const { Model, DataTypes } = require('sequelize');
+
+
+module.exports = sequelize => {
+  class Controllers extends Model {
+    static associate (models){
+      // associations could be defined in here
+    }
+  }
+
+  Controllers.init({
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    device_type_id: {
+      type: DataTypes.INTEGER,
+      references: 'Device_Types',
+      referencesKey: 'id'
+    },
+    local_area_id: {
+      type: DataTypes.INTEGER,
+      references: 'Local_Areas',
+      referencesKey: 'id'
+    },
+    intersection_controller_id: {
+      type: DataTypes.INTEGER,
+      references: 'Intersection_Controllers',
+      referencesKey: 'id',
+      allowNull: true
+    },
+    building_controller_id: {
+      type: DataTypes.INTEGER,
+      references: 'Building_Controllers',
+      referencesKey: 'id'
+    },
+    controller_name: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    controller_type_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    controller_type_name: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    local_area_controller_number: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    local_goverment_controller_number: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    controller_management_departnment: {
+      type: DataTypes.STRING(100),
+      allowNull: true
+    },
+    controller_address: {
+      type: DataTypes.STRING(255),
+      allowNull: false
+    },
+    controller_address_district: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
+    controller_map_screen_save: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    map_x: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
+    },
+    map_y: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
+    },
+    is_active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    is_school_zone: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    is_IOT: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    bigo: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    user_mod: {
+      type: DataTypes.INTEGER,
+      references: 'Users',
+      referencesKey: 'id'
+    },
+    is_deleted: DataTypes.BOOLEAN
+  },{
+    sequelize, modelName: 'Controllers'
+  });
+
+  return Controllers;
+}

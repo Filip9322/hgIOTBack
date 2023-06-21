@@ -30,7 +30,7 @@ module.exports = sequelize => {
       references: 'Users',
       referencesKey: 'id'
     },
-    is_deleted: DataTypes.BOOLEAN,
+    is_deleted: DataTypes.BOOLEAN
   },{
     sequelize, modelName: 'LAreas_Device_Subscriptions'
   });
