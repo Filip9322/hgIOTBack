@@ -20,7 +20,7 @@ module.exports = sequelize =>  {
       references: 'Controllers',
       referencesKey: 'id'
     },
-    intersecction_type_id: {
+    intersection_type_id: {
       type: DataTypes.INTEGER,
       references: 'Intersection_Types',
       referencesKey: 'id'

@@ -26,17 +26,6 @@ module.exports = sequelize => {
       references: 'Local_Areas',
       referencesKey: 'id'
     },
-    intersection_controller_id: {
-      type: DataTypes.INTEGER,
-      references: 'Intersection_Controllers',
-      referencesKey: 'id',
-      allowNull: true
-    },
-    building_controller_id: {
-      type: DataTypes.INTEGER,
-      references: 'Building_Controllers',
-      referencesKey: 'id'
-    },
     controller_name: {
       type: DataTypes.STRING(100),
       allowNull: false

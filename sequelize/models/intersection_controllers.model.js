@@ -15,6 +15,12 @@ module.exports = sequelize => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    controller_id: {
+      type: DataTypes.INTEGER,
+      references: 'Controllers',
+      referencesKey: 'id',
+      allowNull: false
+    },
     inter_device_type_id: {
       type: DataTypes.INTEGER,
       references: 'Intersection_Devices',
