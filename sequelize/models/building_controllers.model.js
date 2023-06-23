@@ -21,18 +21,18 @@ module.exports = sequelize => {
       referencesKey: 'id',
       allowNull: false
     },
+    bd_device_type_id: {
+      type: DataTypes.INTEGER,
+      references: 'Device_Types',
+      referencesKey: 'id',
+      allowNull: false
+    },
     bd_type: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     bd_type_name: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    bd_device_type_id: {
-      type: DataTypes.INTEGER,
-      references: 'Device_Types',
-      referencesKey: 'id',
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     bd_number_floors: {
