@@ -2,35 +2,32 @@
 /** @type {import ('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Intersection_Controllers', {
+    await queryInterface.createTable('Intersection_Devices', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      controller_id: {
+      intersection_controller_id: {
         type: Sequelize.INTEGER,
-        references: {model: 'Controllers', key: 'id'},
+        references: {model: 'Intersection_Controllers', key: 'id'},
         allowNull: false
       },
-      inter_device_type_id: {
+      device_id: {
+        type: Sequelize.INTEGER
+      },
+      pos_number: {
         type: Sequelize.INTEGER,
-        references: {model: 'Intersection_Devices', key: 'id'},
         allowNull: false
       },
-      inter_type_id: {
-        type: Sequelize.INTEGER,
-        references: {model: 'Intersection_Types', key: 'id'},
-        allowNull: false
+      dv_pos_x: {
+        type: Sequelize.DOUBLE,
+        allowNull: true
       },
-      intersection_devices_distribution_id: {
-        type: Sequelize.INTEGER,
-        references: {model: 'Intersection_Device_Distributions', key: 'id'}
-      }, 
-      inter_road_name: {
-        type: Sequelize.STRING(100),
-        allowNull: false
+      dv_pos_y: {
+        type: Sequelize.DOUBLE,
+        allowNull: true
       },
       user_mod: {
         type: Sequelize.INTEGER,
@@ -52,6 +49,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Intersection_Controllers')
+    await queryInterface.dropTable('Intersection_Devices')
   }
 }

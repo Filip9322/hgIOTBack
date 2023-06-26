@@ -126,7 +126,7 @@ Each Model should be registered manually in `sequelize/index.js` is important to
 
 So while all the database queries are sorted by Sequelize library is express who allow us to have a web service and manage different routes to consult different information of the database, trough express we do the user authentication when validating credentials, and is important to mention that a REST API has no views only deliver raw data.
 
-Under `express/routes' & `express/routes/API' could be found all data that is being processed before delivering to the website that requested, there are specific cases qhere not only there is consultation of data but as well association and coding and decoding of tokens.
+Under `express/routes` & `express/routes/API` could be found all data that is being processed before delivering to the website that requested, there are specific cases qhere not only there is consultation of data but as well association and coding and decoding of tokens.
 
 Based on the data requested there could be a sucessfully retrieved data but in case of error please follow the next table.
 
