@@ -16,7 +16,7 @@ module.exports = {
       },
       inter_device_type_id: {
         type: Sequelize.INTEGER,
-        references: {model: 'Intersection_Devices', key: 'id'},
+        references: {model: 'Controllers', key: 'id'},
         allowNull: false
       },
       inter_type_id: {

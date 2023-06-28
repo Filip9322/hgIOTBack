@@ -11,7 +11,7 @@ module.exports = {
       },
       controller_id: {
         type: Sequelize.INTEGER,
-        references: {model: 'Controlles', key: 'id'},
+        references: {model: 'Controllers', key: 'id'},
         allowNull: false
       },
       bd_device_type_id: {

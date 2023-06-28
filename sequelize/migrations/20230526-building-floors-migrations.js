@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false
       },
       floor_blueprint: {
-        type: DataTypes.STRING(255),
+        type: Sequelize.STRING(255),
         allowNull: false
       },
       user_mod: {

@@ -36,7 +36,7 @@ module.exports = {
         allowNull: false
       },
       local_goverment_controller_number: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(100),
         allowNull: true
       },
       controller_management_departnment: {
@@ -56,11 +56,11 @@ module.exports = {
         allowNull: true
       },
       map_x: {
-        type: Sequelize.DOUBLE,
+        type: Sequelize.FLOAT(14, 10),
         allowNull: false
       },
       map_y: {
-        type: Sequelize.DOUBLE,
+        type: Sequelize.FLOAT(14, 10),
         allowNull: false
       },
       is_active: {
