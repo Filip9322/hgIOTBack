@@ -14,7 +14,9 @@ var rolesRouter      = require('./routes/API/roles');
 var userRolesRouter  = require('./routes/API/user_roles');
 var userWAreasRouter = require('./routes/API/user_wide_areas');
 var userLAreasRouter = require('./routes/API/user_local_areas');
+var controllersRouter= require('./routes/API/controllers.js')
 var mapListAllAreas  = require('./routes/map_full_list');
+var controllersMap   = require('./routes/map_controllers.js');
 var userRegLogin     = require('./routes/login');
 var userRegLogout    = require('./routes/logout');
 var devTypesRouter   = require('./routes/API/device_types');
@@ -44,6 +46,7 @@ app.use(cors());
 app.use('/login', userRegLogin);
 app.use('/logout', userRegLogout);
 app.use('/map_list', mapListAllAreas);
+app.use('/map_controllers', controllersMap);
 
 // API routes
 const routes = {
@@ -56,7 +59,8 @@ const routes = {
   user_wide_areas: userWAreasRouter,
   user_local_areas: userLAreasRouter,
   device_types: devTypesRouter,
-  lareas_dev_subscriptions: lareasDevSubsRouter
+  lareas_dev_subscriptions: lareasDevSubsRouter,
+  controllers: controllersRouter
 };
 
 // We define the standart REST API for each route ( if they exist )

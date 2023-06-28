@@ -43,7 +43,7 @@ module.exports = sequelize => {
       allowNull: false
     },
     local_goverment_controller_number: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(100),
       allowNull: true
     },
     controller_management_departnment: {
@@ -63,11 +63,11 @@ module.exports = sequelize => {
       allowNull: true
     },
     map_x: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.FLOAT(14, 10),
       allowNull: false
     },
     map_y: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.FLOAT(14, 10),
       allowNull: false
     },
     is_active: {

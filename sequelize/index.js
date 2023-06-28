@@ -18,6 +18,7 @@ const sequelize = new Sequelize(
 const modelDefiners = [
     require('./models/user.model'),
     require('./models/role.model'),
+    require('./models/controllers.model'),
     require('./models/company.model'),
     require('./models/wide_areas.model'),
     require('./models/user_roles.model'),
