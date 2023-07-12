@@ -82,6 +82,14 @@ module.exports = sequelize => {
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
+    is_installed:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    has_abnormalities: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
     bigo: {
       type: DataTypes.STRING(255),
       allowNull: true
