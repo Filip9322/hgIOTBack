@@ -17,14 +17,14 @@ async function getById (req,res) {
   if(controller) {
     res.status(200).json(controller);
   } else {
-    res.status(404).send('404 - Not found');
+    res.status(404).json('404 - Not found');
   }
 }
 
 async function create (req,res) {
   console.log(Object.keys(req));
   if(req.body.id) {
-    res.status(400).send('Bad request: ID should not be provided, since it is determined automatically by the db.');
+    res.status(400).json('Bad request: ID should not be provided, since it is determined automatically by the db.');
   } else {
     await models.Controllers.create(req.body);
     res.status(201).end();
@@ -43,7 +43,7 @@ async function update (req,res) {
     })
     res.status(200).end();
   } else {
-    res.status(400).send(`Bad request: param ID (${id}) does not match body ID(${req.body.id}`);
+    res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);
   }
 }
 
@@ -55,7 +55,7 @@ async function remove (req,res) {
     await models.Controllers.update(body, {where: { id: id }});
 
   } else {
-    res.status(400).send(`Bad request: param ID (${id}) does not match body ID(${req.body.id}`);
+    res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);
   }
 }
 

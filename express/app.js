@@ -6,6 +6,11 @@ var createError  = require('http-errors');
 var cookieParser = require('cookie-parser');
 
 var indexRouter      = require('./routes/index');
+var userRegLogin     = require('./routes/login');
+var userRegLogout    = require('./routes/logout');
+var mapListAllAreas  = require('./routes/map_full_list');
+var controllersMap   = require('./routes/map_controllers.js');
+
 var usersRouter      = require('./routes/API/user');
 var wideAreasRouter  = require('./routes/API/wide_areas');
 var localAreasRouter = require('./routes/API/local_areas');
@@ -14,12 +19,9 @@ var rolesRouter      = require('./routes/API/roles');
 var userRolesRouter  = require('./routes/API/user_roles');
 var userWAreasRouter = require('./routes/API/user_wide_areas');
 var userLAreasRouter = require('./routes/API/user_local_areas');
-var controllersRouter= require('./routes/API/controllers.js')
-var mapListAllAreas  = require('./routes/map_full_list');
-var controllersMap   = require('./routes/map_controllers.js');
-var userRegLogin     = require('./routes/login');
-var userRegLogout    = require('./routes/logout');
+var controllersRouter= require('./routes/API/controllers.js');
 var devTypesRouter   = require('./routes/API/device_types');
+var interTypesRouter = require('./routes/API/intersection_types.js');
 var lareasDevSubsRouter = require('./routes/API/lareas_device_subscriptions')
 
 var app = express();
@@ -59,8 +61,9 @@ const routes = {
   user_wide_areas: userWAreasRouter,
   user_local_areas: userLAreasRouter,
   device_types: devTypesRouter,
+  controllers: controllersRouter,
   lareas_dev_subscriptions: lareasDevSubsRouter,
-  controllers: controllersRouter
+  intersection_types: interTypesRouter
 };
 
 // We define the standart REST API for each route ( if they exist )
