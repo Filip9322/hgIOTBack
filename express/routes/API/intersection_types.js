@@ -48,7 +48,7 @@ async function remove (req, res) {
     await models.IntersectionTypes.update(body, { where: {id:id}});
     res.status(200).end();
   }else {
-    res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id})`;
+    res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id})`);
   }
 }
 

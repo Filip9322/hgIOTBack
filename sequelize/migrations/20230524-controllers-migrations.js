@@ -39,7 +39,7 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: true
       },
-      controller_management_departnment: {
+      controller_management_department: {
         type: Sequelize.STRING(100),
         allowNull: true
       },

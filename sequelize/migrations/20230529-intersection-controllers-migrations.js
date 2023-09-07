@@ -19,7 +19,7 @@ module.exports = {
         references: {model: 'Controllers', key: 'id'},
         allowNull: false
       },
-      inter_type_id: {
+      intersection_type_id: {
         type: Sequelize.INTEGER,
         references: {model: 'Intersection_Types', key: 'id'},
         allowNull: false
@@ -27,10 +27,6 @@ module.exports = {
       intersection_devices_distribution_id: {
         type: Sequelize.INTEGER,
         references: {model: 'Intersection_Device_Distributions', key: 'id'}
-      }, 
-      inter_road_name: {
-        type: Sequelize.STRING(100),
-        allowNull: false
       },
       user_mod: {
         type: Sequelize.INTEGER,

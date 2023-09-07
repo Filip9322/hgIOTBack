@@ -46,7 +46,7 @@ module.exports = sequelize => {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    controller_management_departnment: {
+    controller_management_department: {
       type: DataTypes.STRING(100),
       allowNull: true
     },
