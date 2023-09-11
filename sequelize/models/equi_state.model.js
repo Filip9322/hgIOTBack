@@ -21,14 +21,12 @@ module.exports = sequelize => {
       referencesKey: 'id',
       allowNull: false
     },
-    controller_local_id: {
+    controller_local_area_id: {
       type: DataTypes.INTEGER,
-      references: 'Controllers',
-      referencesKey: 'id',
       allowNull: false
     },
     equi_num: {
-      type_name: DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     occur_time: {
@@ -303,7 +301,7 @@ module.exports = sequelize => {
     },
     rlterm: {
       type: DataTypes.STRING(100),
-      allowNull: false
+      allowNull: true
     },
     grid: {
       type: DataTypes.INTEGER,

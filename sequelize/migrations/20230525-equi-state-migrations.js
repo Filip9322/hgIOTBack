@@ -14,9 +14,8 @@ module.exports = {
         references: {model: 'Local_Areas', key: 'id'},
         allowNull: false
       },
-      controller_local_id: {
+      controller_local_area_id: {
         type: Sequelize.INTEGER,
-        references: {model: 'Controllers', key: 'id'},
         allowNull: false
       },
       equi_num: {
@@ -242,7 +241,7 @@ module.exports = {
       },
       rlterm: {
         type: Sequelize.STRING(100),
-        allowNull: false
+        allowNull: true
       },
       grid: {
         type: Sequelize.INTEGER,
