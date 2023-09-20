@@ -10,6 +10,7 @@ var userRegLogin     = require('./routes/login');
 var userRegLogout    = require('./routes/logout');
 var mapListAllAreas  = require('./routes/map_full_list');
 var controllersMap   = require('./routes/map_controllers.js');
+var equiStateCustom  = require('./routes/equi_state_byLocalAndDevice.js');
 
 var usersRouter      = require('./routes/API/user');
 var wideAreasRouter  = require('./routes/API/wide_areas');
@@ -22,6 +23,7 @@ var userLAreasRouter = require('./routes/API/user_local_areas');
 var controllersRouter= require('./routes/API/controllers.js');
 var devTypesRouter   = require('./routes/API/device_types');
 var interTypesRouter = require('./routes/API/intersection_types.js');
+var equiEstateRouter = require('./routes/API/equi_state.js');
 var lareasDevSubsRouter = require('./routes/API/lareas_device_subscriptions')
 
 var app = express();
@@ -49,6 +51,7 @@ app.use('/login', userRegLogin);
 app.use('/logout', userRegLogout);
 app.use('/map_list', mapListAllAreas);
 app.use('/map_controllers', controllersMap);
+app.use('/equi_state', equiStateCustom);
 
 // API routes
 const routes = {
@@ -63,7 +66,8 @@ const routes = {
   device_types: devTypesRouter,
   controllers: controllersRouter,
   lareas_dev_subscriptions: lareasDevSubsRouter,
-  intersection_types: interTypesRouter
+  intersection_types: interTypesRouter,
+  equi_state: equiEstateRouter
 };
 
 // We define the standart REST API for each route ( if they exist )
