@@ -7,7 +7,7 @@ async function getAll(req,  res) {
 
 async function getById(req, res) {
   const _id = getIdParam(req);
-  const equi_state = await models.Equi_State.findOne(
+  const equi_state = await models.Equi_States.findOne(
     { where: { id: _id, is_deleted: false }});
 
   if ( equi_state ) {
@@ -22,7 +22,7 @@ async function create (req, res) {
   if(req.body.id) {
     res.status(400).json('Bad request: ID should not be provided, since it is determined automatically by the db.');
   } else {
-    await models.Equi_State.create(req.body);
+    await models.Equi_States.create(req.body);
     res.status(201).end();
   }
 }
@@ -31,7 +31,7 @@ async function update (req, res) {
   const _id = getIdParam(req);
   // We only accep a UPDATE request if the `:id` param matches the body `id` from the body
   if (req.body.id === _id) {
-    await models.Equi_State.update(req.body, {
+    await models.Equi_States.update(req.body, {
       where: {
         id: _id,
         is_deleted: false
@@ -48,7 +48,7 @@ async function remove (req, res) {
   // We only accep a UPDATE request if the `:id` param matches the body `id` from the body
   if (req.body.id === _id) {
     let body = {'is_deleted': true };
-    await models.Equi_State.update(body, {where: { id: _id }});
+    await models.Equi_States.update(body, {where: { id: _id }});
     res.status(200).end();
   } else {
     res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);

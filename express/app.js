@@ -10,7 +10,7 @@ var userRegLogin     = require('./routes/login');
 var userRegLogout    = require('./routes/logout');
 var mapListAllAreas  = require('./routes/map_full_list');
 var controllersMap   = require('./routes/map_controllers.js');
-var equiStateCustom  = require('./routes/equi_state_byLocalAndDevice.js');
+var equiStateCustom  = require('./routes/equi_state_custom.js');
 
 var usersRouter      = require('./routes/API/user');
 var wideAreasRouter  = require('./routes/API/wide_areas');

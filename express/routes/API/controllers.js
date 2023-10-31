@@ -41,7 +41,7 @@ async function update (req,res) {
         is_deleted: false
       }
     });
-    res.status(200).end();
+    res.status(204).end();
   } else {
     res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);
   }

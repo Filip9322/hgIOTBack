@@ -78,7 +78,7 @@ module.exports = sequelize => {
       allowNull: false,
       defaultValue: 0
     },
-    ligth_state: {
+    light_state: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
@@ -333,7 +333,7 @@ module.exports = sequelize => {
       defaultValue: false
     }
   },{
-    sequelize, modelName: 'Equi_State'
+    sequelize, modelName: 'Equi_States'
   });
 
   return Equi_State;
