@@ -1,8 +1,8 @@
 'use strict';
-/** @type {import ('sequelize-clil').Migration } */
+/** @type {import ('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('RoundsExperiment', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('Rounds_Experiment', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,12 +12,12 @@ module.exports = {
       user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {model: 'EUsers', key: 'is_deleted'}
+        references: { model: 'EUsers', key: 'id'}
       },
       experiment_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { mode: 'UserExperiments', key: 'id'}
+        references: { model: 'User_Experiments', key: 'id'}
       },
       round_number: {
         allowNull: false,
@@ -41,7 +41,7 @@ module.exports = {
       }
     });
   },
-  async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('RoundsExperiment');
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('Rounds_Experiment');
   }
 }
