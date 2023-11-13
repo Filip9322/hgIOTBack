@@ -14,10 +14,25 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'EUsers', key: 'id'}
       },
-      experiment_id: {
+      experiment_date: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      technique_name: {
+        type: Sequelize.STRING(100),
+        allowNull: false
+      },
+      start_round: {
+        type: Sequelize.TIME,
+        allowNull: true
+      },
+      finish_round: {
+        type: Sequelize.TIME,
+        allowNull: true
+      },
+      experiment_number: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'User_Experiments', key: 'id'}
       },
       round_number: {
         allowNull: false,
@@ -27,7 +42,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(100)
       },
-      selected_nameL: {
+      selected_name: {
         allowNull: false,
         type: Sequelize.STRING(100)
       },
@@ -37,7 +52,7 @@ module.exports = {
       },
       time_expended: {
         allowNull: false,
-        type: Sequelize.TIME
+        type: Sequelize.FLOAT
       }
     });
   },
