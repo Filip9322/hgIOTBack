@@ -23,11 +23,11 @@ module.exports = {
         allowNull: false
       },
       start_round: {
-        type: Sequelize.TIME,
+        type: Sequelize.STRING(20),
         allowNull: true
       },
       finish_round: {
-        type: Sequelize.TIME,
+        type: Sequelize.STRING(20),
         allowNull: true
       },
       experiment_number: {
@@ -48,7 +48,7 @@ module.exports = {
       },
       result: {
         allowNull: false,
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING(100)
       },
       time_expended: {
         allowNull: false,
