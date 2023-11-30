@@ -18,7 +18,13 @@ module.exports = sequelize => {
     local_area_id: {
       type: DataTypes.INTEGER,
       references: 'Local_Areas',
-      referencesKey: 'id'
+      referencesKey: 'id',
+      allowNull: false
+    },
+    controller_number: {
+      type: DataTypes.INTEGER,
+      references: 'Controllers',
+      referencesKey: 'local_area_controller_number',
       allowNull: false
     },
     equi_state_id: {
@@ -31,7 +37,7 @@ module.exports = sequelize => {
       allowNull: true,
       type: DataTypes.STRING(50)
     },
-    production_comp: {
+    prod_comp: {
       type: DataTypes.STRING(50),
       allowNull: true
     },
@@ -48,6 +54,10 @@ module.exports = sequelize => {
       allowNull: true
     },
     prod_date: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    install_date: {
       type: DataTypes.DATE,
       allowNull: true
     },
