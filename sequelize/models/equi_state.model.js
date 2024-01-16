@@ -5,6 +5,7 @@ module.exports = sequelize => {
   class Equi_State extends Model {
     static associate (models){
       // associations could be defined in here
+      Equi_State.hasOne(Equipments);
     }
   }
 

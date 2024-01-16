@@ -4,7 +4,11 @@ const { Model, DataTypes} = require("sequelize");
 module.exports = sequelize => {
   class Equipments extends Model {
     static associate (models) {
-      // associations could be defined in here
+      // associations could be defined in here -
+      Equipments.belongsTo(models.Equi_states, {
+        foreignKey: 'id',
+        as:'equipments'
+      })
     }
   }
 
