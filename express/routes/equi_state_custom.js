@@ -69,13 +69,10 @@ async function byLocalAreaAndControllerID(req, res, next) {
           next(err);
         } finally {
           // Do not return result until being on the last row!
-          if(modEqui_state.length == equi_states.length && !equipmentIsNull) {
-            console.log(equipmentIsNull);
-            return res.status(200).json(modEqui_state);
+          if(modEqui_state.length == equi_states.length ) {
+            return res.status(200).json(modEqui_state);  //<- Return with equipment
           } else if (modEqui_state.length == equi_states.length && equipmentIsNull) {
-            console.log("hello!!!12342342134!!!@#$$%*%*%(*");
-            console.log(modEqui_state.length)
-            return res.status(404).json('404 - Not Found');
+            return res.status(404).json('404 - Not Found'); //<- Return without equipment
           }
         }
       });
@@ -83,10 +80,11 @@ async function byLocalAreaAndControllerID(req, res, next) {
 
   } catch(err) {
     next(err)
+  } finally {
+    console.log("I am returning----------------------------------------------");      
+  // return res;
   } 
   
-  // console.log("I am returning----------------------------------------------");      
-  // return res;
 }
 
 module.exports = router;
