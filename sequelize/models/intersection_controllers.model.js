@@ -32,11 +32,6 @@ module.exports = sequelize => {
       references: 'Intersection_Types',
       referencesKey: 'id'
     },
-    intersection_devices_distribution_id: {
-      type: DataTypes.INTEGER,
-      references: 'Intersection_Device_Distributions',
-      referencesKey: 'id'
-    },
     user_mod: {
       type: DataTypes.INTEGER,
       references: 'Users',

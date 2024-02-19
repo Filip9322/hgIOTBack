@@ -24,10 +24,6 @@ module.exports = {
         references: {model: 'Intersection_Types', key: 'id'},
         allowNull: false
       },
-      intersection_devices_distribution_id: {
-        type: Sequelize.INTEGER,
-        references: {model: 'Intersection_Device_Distributions', key: 'id'}
-      },
       user_mod: {
         type: Sequelize.INTEGER,
         references: {model: 'Users', key: 'id'},
