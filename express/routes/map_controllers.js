@@ -15,8 +15,35 @@ router.get('/', (req, res, next) =>{
   res.status(404).send('Not found');
 });
 
-router.post('/', (req, res, next) =>{
-  res.status(404).send('Not found');
+router.post('/:local_area/:device_type/create', async (req, res, next) =>{
+  let  device_type_p = req.params.device_type;
+  let  local_area_p  = req.params.local_area;
+
+  if(req.body){
+    try{
+      let lareaControllerNo = req.body.local_area_controller_number;
+
+      if(lareaControllerNo && validateIsInteger(lareaControllerNo)){
+        const checkControllerNoExist = await models.Controllers.findOne({where: {
+          device_type_id: device_type_p,
+          local_area_id: local_area_p,
+          local_area_controller_number: lareaControllerNo,
+          is_deleted: false
+        }});
+        console.log(checkControllerNoExist);
+
+        if(!checkControllerNoExist){
+          res.status(200).json("req: " + lareaControllerNo);
+        } else {
+          res.status(400).send(`Bad request: row with local_area_controller_number (${lareaControllerNo}) already exits in database.`);
+        }
+      } else {
+        res.status(400).send(`Bad request: param local_area_controller_number was not provided.`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 });
 
 router.get('/:local_area/:device_type', async (req, res, next) =>{
@@ -49,8 +76,8 @@ router.get('/:local_area/:device_type', async (req, res, next) =>{
           } else { res.status(400).send(`Bad request: Local_area (${local_area_p}) has no device (${device_type_p}) subscription.`);}
         } else { res.status(400).send(`Bad request: Local_area (${local_area_p}) has no devices subscriptions.`);}
       } else { res.status(400).send(`Bad request: Local_area (${local_area_p}) does not exists.`);}
-    } else { res.status(400).send(`Bad request: param device_type (${device_type_p}) is noot an integer.`);}
-  } else { res.status(400).send(`Bad request: param local_area (${local_area_p}) is noot an integer.`);}  
+    } else { res.status(400).send(`Bad request: param device_type (${device_type_p}) is not an integer.`);}
+  } else { res.status(400).send(`Bad request: param local_area (${local_area_p}) is not an integer.`);}  
 });
 
 module.exports = router;
