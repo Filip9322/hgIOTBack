@@ -30,15 +30,47 @@ router.post('/:local_area/:device_type/create', async (req, res, next) =>{
           local_area_controller_number: lareaControllerNo,
           is_deleted: false
         }});
-        console.log(checkControllerNoExist);
-
+        
         if(!checkControllerNoExist){
-          res.status(200).json("req: " + lareaControllerNo);
+          let body = req.body;
+          let error = '';
+
+          
+          if(!body.local_area_controller_number) { error = `Bad request: param local_area_controller_number was not provided.`; }
+          if(!body.controller_name)              { error = `Bad request: param controller_name was not provided.`; }
+          if(!body.controller_address)           { error = `Bad request: param controller_address was not provided.`; }
+          if(!body.map_x || !body.map_x)         { error = `Bad request: param map_x or map_y was not provided.`; }
+
+          if (error == ''){
+            let active = false;
+            let schoolZone = false;
+            let is_installed = false;
+
+            if(body.is_active == undefined) {
+              Object.assign(body,{is_active: active});
+            } else { is_installed = true; }
+            if(body.is_school_zone == undefined) Object.assign(body,{is_school_zone: schoolZone});
+
+            Object.assign(body,{controller_type_id: device_type_p });
+            Object.assign(body,{is_installed: is_installed });
+            Object.assign(body,{has_abnormalities: false });
+
+            try{
+              const createController = await models.Controllers.create(req.body);
+              res.status(200).json(createController);
+            } catch (error) {
+              res.status(400).json({code: 103, error: error});
+            }
+
+          } else {
+            res.status(400).json({code: 100, message: error});
+          }
+          
         } else {
-          res.status(400).send(`Bad request: row with local_area_controller_number (${lareaControllerNo}) already exits in database.`);
+          res.status(400).json({code: 101, message:`Bad request: row with local_area_controller_number (${lareaControllerNo}) already exits in database.`});
         }
       } else {
-        res.status(400).send(`Bad request: param local_area_controller_number was not provided.`);
+        res.status(400).json({code: 100, message:`Bad request: param local_area_controller_number was not provided.`});
       }
     } catch (error) {
       console.error(error);

@@ -56,7 +56,7 @@ module.exports = sequelize => {
     },
     controller_address_district: {
       type: DataTypes.STRING(100),
-      allowNull: false
+      allowNull: true
     },
     controller_map_screen_save: {
       type: DataTypes.STRING(255),
