@@ -45,19 +45,26 @@ router.post('/:local_area/:device_type/create', async (req, res, next) =>{
             let active = false;
             let schoolZone = false;
             let is_installed = false;
+            let controller_type_id = 1;
 
             if(body.is_active == undefined) {
               Object.assign(body,{is_active: active});
             } else { is_installed = true; }
+            
             if(body.is_school_zone == undefined) Object.assign(body,{is_school_zone: schoolZone});
 
-            Object.assign(body,{controller_type_id: device_type_p });
+            if(device_type_p == 1) controller_type_id = 1;
+
+            Object.assign(body,{local_area_id: local_area_p });
+            Object.assign(body,{device_type_id: device_type_p }); // need to be adjusted for 음향신호기
+            Object.assign(body,{controller_type_id: controller_type_id });
             Object.assign(body,{is_installed: is_installed });
             Object.assign(body,{has_abnormalities: false });
 
             try{
-              const createController = await models.Controllers.create(req.body);
+              const createController = await models.Controllers.create(body);
               res.status(200).json(createController);
+
             } catch (error) {
               res.status(400).json({code: 103, error: error});
             }

@@ -56,11 +56,13 @@ module.exports = sequelize => {
     },
     controller_address_district: {
       type: DataTypes.STRING(100),
-      allowNull: true
+      allowNull: true,
+      defaultValue: ''
     },
     controller_map_screen_save: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: true,
+      defaultValue: ''
     },
     map_x: {
       type: DataTypes.FLOAT(14, 10),
@@ -97,9 +99,13 @@ module.exports = sequelize => {
     user_mod: {
       type: DataTypes.INTEGER,
       references: 'Users',
-      referencesKey: 'id'
+      referencesKey: 'id',
+      defaultValue: 1
     },
-    is_deleted: DataTypes.BOOLEAN
+    is_deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   },{
     sequelize, modelName: 'Controllers'
   });
