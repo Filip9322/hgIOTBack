@@ -2,13 +2,16 @@ const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
 async function getAll(req, res) {
-  const inter_types = await models.IntersectionTypes.findAll({where:{is_deleted: false}});
+  const inter_types = await models.Intersection_Types.findAll({
+    where:{is_deleted: false}
+  });
+  
   res.status(200).json(inter_types);
 }
 
 async function getById(req, res) {
   const id = getIdParam(req);
-  const inter_types = await models.IntersectionTypes.findByPk(id);
+  const inter_types = await models.Intersection_Types.findByPk(id);
 
   if(inter_types){
     res.status(200).json(inter_types);
@@ -22,7 +25,7 @@ async function create(req, res) {
   if(req.body.id) {
     res.status(400).send('Bad request: ID should not be provided, since it is determined automatically by the db');
   } else {
-    await models.IntersectionTypes.create(req.body);
+    await models.Intersection_Types.create(req.body);
     res.status(201).end();
   }
 }
@@ -30,7 +33,7 @@ async function create(req, res) {
 async function update(req, res) {
   const id = getIdParam(req);
   if(req.body.id === id) {
-    await models.IntersectionTypes.update(req.body, {
+    await models.Intersection_Types.update(req.body, {
       where: {
         id: id
       }
@@ -45,7 +48,7 @@ async function remove (req, res) {
   const id = getIdParam(req);
   if(req.body.id === id) {
     let body = { 'is_deleted': true };
-    await models.IntersectionTypes.update(body, { where: {id:id}});
+    await models.Intersection_Types.update(body, { where: {id:id}});
     res.status(200).end();
   }else {
     res.status(400).send(`Bad request: param ID (${id}) does not match body ID (${req.body.id})`);
