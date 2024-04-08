@@ -42,5 +42,8 @@ module.exports = sequelize => {
     sequelize, modelName: 'Intersection_Controllers'
   });
 
+  sequelize.models.Controllers.hasOne(sequelize.models.Intersection_Controllers, { foreignKey: 'controller_id' });
+  Intersection_Controllers.belongsTo( sequelize.models.Controllers, { foreignKey: 'id'});
+
   return Intersection_Controllers;
 }

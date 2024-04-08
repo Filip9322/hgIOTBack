@@ -1,7 +1,6 @@
 'use strict';
 const { Model, DataTypes } = require('sequelize');
 
-
 module.exports = sequelize => {
   class Controllers extends Model {
     static associate (models){
@@ -109,6 +108,8 @@ module.exports = sequelize => {
   },{
     sequelize, modelName: 'Controllers'
   });
+
+  //Controllers.hasOne(sequelize.models.Intersection_Controllers, { foreignKey: 'controller_id' });
 
   return Controllers;
 }

@@ -11,8 +11,9 @@ async function getAll (req,res) {
 
 async function getById (req,res) {
   const _id = getIdParam(req);
+  const inter_id   = await models.Intersection_Controllers.findOne({where:{controller_id: _id, is_deleted: false}})
   const controller = await models.Controllers.findOne(
-    {where:{id: _id, is_deleted: false}});
+    {where:{id: _id, is_deleted: false}, include: [{model: models.Intersection_Controllers }]});
 
   if(controller) {
     res.status(200).json(controller);

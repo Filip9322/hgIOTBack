@@ -110,8 +110,16 @@ router.get('/:local_area/:device_type', async (req, res, next) =>{
           if(sub_id){
             // Search for all controllers in local area that belong to device_type
             const controllers = await models.Controllers.findAll(
-              { where:{ device_type_id: device_type_p, local_area_id: local_area_p, is_deleted: false }});
-            res.status(200).json(controllers);
+              { where:{ device_type_id: device_type_p, local_area_id: local_area_p, is_deleted: false },
+                include: [{model: models.Intersection_Controllers, as: 'Intersection_Controller' }]
+             });
+
+            if(controllers){
+              res.status(200).json(controllers);
+            } else {
+              res.status(404).send(`Not Found: local_area (${local_area_p}) has not controllers of type (${device_type_p}) associated.`);
+            }
+
           } else { res.status(400).send(`Bad request: Local_area (${local_area_p}) has no device (${device_type_p}) subscription.`);}
         } else { res.status(400).send(`Bad request: Local_area (${local_area_p}) has no devices subscriptions.`);}
       } else { res.status(400).send(`Bad request: Local_area (${local_area_p}) does not exists.`);}
