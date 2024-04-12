@@ -26,7 +26,7 @@ module.exports = {
     {
       id: 3,
       inter_type_draw: 'device-maps/4-devices.png',
-      inter_type_name: '거리 4',
+      inter_type_name: '사거리 4',
       inter_type_number_devices: 4,
       user_mod: 1,
       is_deleted: false,

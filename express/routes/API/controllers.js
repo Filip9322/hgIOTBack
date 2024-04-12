@@ -27,8 +27,12 @@ async function create (req,res) {
   if(req.body.id) {
     res.status(400).json('Bad request: ID should not be provided, since it is determined automatically by the db.');
   } else {
-    await models.Controllers.create(req.body);
-    res.status(201).end();
+    if(req.body.inse_type){
+      await models.Controllers.create(req.body);
+      res.status(201).end();
+    } else {
+      res.status(400).json('Bad request: Missing inse_type, required for creating a new controller.');
+    }
   }
 }
 

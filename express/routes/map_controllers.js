@@ -40,6 +40,7 @@ router.post('/:local_area/:device_type/create', async (req, res, next) =>{
           if(!body.controller_name)              { error = `Bad request: param controller_name was not provided.`; }
           if(!body.controller_address)           { error = `Bad request: param controller_address was not provided.`; }
           if(!body.map_x || !body.map_x)         { error = `Bad request: param map_x or map_y was not provided.`; }
+          if(!body.inse_type)                    { error = `Bad request: param inse_type was not provided.`};
 
           if (error == ''){
             let active = false;
@@ -61,12 +62,29 @@ router.post('/:local_area/:device_type/create', async (req, res, next) =>{
             Object.assign(body,{is_installed: is_installed });
             Object.assign(body,{has_abnormalities: false });
 
+            var createController = {};
             try{
-              const createController = await models.Controllers.create(body);
-              res.status(200).json(createController);
+              createController = await models.Controllers.create(body);
+
+              createdControllerID = parseInt(createController.dataValues.id);
 
             } catch (error) {
               res.status(400).json({code: 103, error: error});
+            } finally {
+              if(createdControllerID > 0){
+                const bodyInseType = {
+                  "controller_id": createdControllerID,
+                  "inter_device_type_id": controller_type_id,
+                  "intersection_type_id": body.inse_type,
+                }
+                try{
+                  const createInseTYpeOfController = await models.Intersection_Controllers.create(bodyInseType);
+                  res.status(200).json(createController);
+                } catch (error){
+                  error = `Insert Error: Error while inserting new Intersection_controller.`;
+                  res.status(400).json({code: 103, error: error});
+                }
+              }
             }
 
           } else {

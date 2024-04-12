@@ -35,9 +35,13 @@ module.exports = sequelize => {
     user_mod: {
       type: DataTypes.INTEGER,
       references: 'Users',
-      referencesKey: 'id'
+      referencesKey: 'id',
+      defaultValue: 1
     },
-    is_deleted: DataTypes.BOOLEAN
+    is_deleted: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   },{
     sequelize, modelName: 'Intersection_Controllers'
   });
