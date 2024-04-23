@@ -21,6 +21,7 @@ var userRolesRouter  = require('./routes/API/user_roles');
 var userWAreasRouter = require('./routes/API/user_wide_areas');
 var userLAreasRouter = require('./routes/API/user_local_areas');
 var controllersRouter= require('./routes/API/controllers.js');
+var devModelRouter   = require('./routes/API/device_model.js');
 var devTypesRouter   = require('./routes/API/device_types');
 var interTypesRouter = require('./routes/API/intersection_types.js');
 var equiEstateRouter = require('./routes/API/equi_state.js');
@@ -64,6 +65,7 @@ const routes = {
   user_wide_areas: userWAreasRouter,
   user_local_areas: userLAreasRouter,
   device_types: devTypesRouter,
+  device_models: devModelRouter,
   controllers: controllersRouter,
   lareas_dev_subscriptions: lareasDevSubsRouter,
   intersection_types: interTypesRouter,

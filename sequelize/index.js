@@ -32,7 +32,8 @@ const modelDefiners = [
     require('./models/lareas_device_subscriptions.model'),
     require('./models/devices_types.model'),
     require('./models/equi_state.model'),
-    require('./models/equipments.model')
+    require('./models/equipments.model'),
+    require('./models/device_model.model')
     // All models could be listed here
 ];
 
