@@ -123,5 +123,8 @@ module.exports = sequelize => {
     sequelize, modelName: 'Equipments'
   });
 
+  sequelize.models.Equi_States.hasOne(sequelize.models.Equipments, {foreignKey: 'equi_state_id'});
+  Equipments.belongsTo( sequelize.models.Equi_States, {foreignKey: 'id'});
+
   return Equipments;
 }

@@ -27,55 +27,13 @@ async function byLocalAreaAndControllerID(req, res, next) {
       { where: { 
         local_num: local_area_id, 
         controller_local_area_id: controller_la_id,
-        is_deleted: false},
+        is_deleted: false },
+        include: [{model: models.Equipments}],
         order: [['equi_num', 'ASC']] }
     );
 
     if (equi_states && equi_states.length != 0) {
-      
-      equi_states.map( async (equi_state,row)  =>{
-        var equipmentIsNull = true;
-        
-        try{
-          // -- Find Equipments related
-          const equipment = await models.Equipments.findOne(
-            { 
-              where: {
-              equi_state_id: equi_state.id,
-              is_deleted: false
-              }
-            }).then( equipments =>{
-              if (equipments)
-              {
-                equipmentIsNull = false; 
-                Object.assign(equi_state.dataValues,{map_x: equipments.map_x});
-                Object.assign(equi_state.dataValues,{map_y: equipments.map_y});
-                Object.assign(equi_state.dataValues,{sound_text: equipments.sound_text});
-
-                // Build a new object with rows modified
-                modEqui_state.push(equi_state);
-              } else {
-                
-                Object.assign(equi_state.dataValues,{map_x: '0'});
-                Object.assign(equi_state.dataValues,{map_y: '0'});
-                Object.assign(equi_state.dataValues,{sound_text: '0'});
-
-                // Build a new object with rows modified
-                modEqui_state.push(equi_state);
-              }
-            });
-        
-        } catch (err){
-          next(err);
-        } finally {
-          // Do not return result until being on the last row!
-          if(modEqui_state.length == equi_states.length ) {
-            return res.status(200).json(modEqui_state);  //<- Return with equipment
-          } else if (modEqui_state.length == equi_states.length && equipmentIsNull) {
-            return res.status(404).json('404 - Not Found'); //<- Return without equipment
-          }
-        }
-      });
+        return res.status(200).json(equi_states);  //<- Return with equipment
     }
 
   } catch(err) {

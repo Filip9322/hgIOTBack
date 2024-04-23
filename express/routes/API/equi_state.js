@@ -8,7 +8,7 @@ async function getAll(req,  res) {
 async function getById(req, res) {
   const _id = getIdParam(req);
   const equi_state = await models.Equi_States.findOne(
-    { where: { id: _id, is_deleted: false }});
+    { where: { id: _id, is_deleted: false }, include: [{model: models.Equipments}]});
 
   if ( equi_state ) {
     res.status(200).json(equi_state);
