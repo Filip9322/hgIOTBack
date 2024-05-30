@@ -14,6 +14,10 @@ module.exports = {
         allowNull: false,
         references: {model: 'Device_Types', key: 'id'}
       },
+      model_gname: {
+        type: Sequelize.STRING(100),
+        allowNull: false
+      },
       model_code: {
         type: Sequelize.STRING(20),
         allowNull: true

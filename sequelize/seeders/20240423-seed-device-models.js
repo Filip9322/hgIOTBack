@@ -7,7 +7,8 @@ module.exports = {
       {
         id: 1,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "008A",
         bigo: '',
         user_mod: 1,
@@ -18,7 +19,8 @@ module.exports = {
       {
         id: 2,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "0010A",
         bigo: '',
         user_mod: 1,
@@ -29,7 +31,8 @@ module.exports = {
       {
         id: 3,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "9000A",
         bigo: '',
         user_mod: 1,
@@ -40,7 +43,8 @@ module.exports = {
       {
         id: 4,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "PD-500",
         bigo: '',
         user_mod: 1,
@@ -51,7 +55,8 @@ module.exports = {
       {
         id: 5,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "SDS-3000A",
         bigo: '',
         user_mod: 1,
@@ -62,7 +67,8 @@ module.exports = {
       {
         id: 6,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "TC-SMART2019A",
         bigo: '',
         user_mod: 1,
@@ -73,7 +79,8 @@ module.exports = {
       {
         id: 7,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "HG-Smart-17A",
         bigo: '',
         user_mod: 1,
@@ -84,7 +91,8 @@ module.exports = {
       {
         id: 8,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "HG-Smart-18A",
         bigo: '',
         user_mod: 1,
@@ -95,7 +103,8 @@ module.exports = {
       {
         id: 9,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "HG-Smart-18A-B",
         bigo: '',
         user_mod: 1,
@@ -106,7 +115,8 @@ module.exports = {
       {
         id: 10,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "HG-Smart-18B",
         bigo: '',
         user_mod: 1,
@@ -117,7 +127,8 @@ module.exports = {
       {
         id: 11,
         device_type_id: 1,
-        model_code: '' ,
+        model_gname: '모델명 목록',
+        model_code: '0006',
         model_name: "HG-Smart-19A",
         bigo: '',
         user_mod: 1,

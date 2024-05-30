@@ -19,6 +19,10 @@ module.exports = sequelize => {
       references: 'Device_Types',
       referencesKey: 'id'
     },
+    model_gname: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
     model_code: {
       type: DataTypes.STRING(20),
       allowNull: true
