@@ -22,6 +22,10 @@ module.exports = {
         type: Sequelize.STRING(20),
         allowNull: true
       },
+      model_subcode: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       model_name: {
         type: Sequelize.STRING(50),
         allowNull: false

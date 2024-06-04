@@ -27,6 +27,10 @@ module.exports = sequelize => {
       type: DataTypes.STRING(20),
       allowNull: true
     },
+    model_subcode: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     model_name: {
       type: DataTypes.STRING(50),
       allowNull: false
