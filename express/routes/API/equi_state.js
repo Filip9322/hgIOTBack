@@ -22,6 +22,8 @@ async function create (req, res) {
   if(req.body.id) {
     res.status(400).json('Bad request: ID should not be provided, since it is determined automatically by the db.');
   } else {
+    // Validate local_num and local_area_controller_number
+    console.log('HERE');
     await models.Equi_States.create(req.body);
     res.status(201).end();
   }

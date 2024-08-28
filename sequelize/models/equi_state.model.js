@@ -32,7 +32,7 @@ module.exports = sequelize => {
     },
     occur_time: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     lora_id: {
       type: DataTypes.STRING(255),
@@ -40,7 +40,7 @@ module.exports = sequelize => {
     },
     state_code: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         min: 0,
         max: 99
@@ -48,11 +48,11 @@ module.exports = sequelize => {
     },
     period_gubn: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     button_cnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0
@@ -60,15 +60,15 @@ module.exports = sequelize => {
     },
     m358_cnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
-      validate: {
+      validate: { 
         min: 0
       }
     },
     m235_cnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0
@@ -76,12 +76,12 @@ module.exports = sequelize => {
     },
     power_state: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     light_state: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -90,7 +90,7 @@ module.exports = sequelize => {
     },
     speaker_state: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -99,17 +99,17 @@ module.exports = sequelize => {
     },
     time1: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '22:00:00'
     },
     time2: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '07:30:00'
     },
     volume: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         min: 1,
         max: 255
@@ -117,27 +117,27 @@ module.exports = sequelize => {
     },
     induce: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     signal0: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     m358i_cnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     cover_cnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     button_state: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -146,63 +146,63 @@ module.exports = sequelize => {
     },
     ftime1: {
       type: DataTypes.TIME,
-      allowNull: false
+      allowNull: true
     },
     ftime2: {
       type: DataTypes.TIME,
-      allowNull: false
+      allowNull: true
     },
     period: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     address: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     ftime21: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     ftime22: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     stime11: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     stime12: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     stime21: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     stime22: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     stime31: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     stime32: {
       type: DataTypes.TIME,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '00:00:00'
     },
     redsoundcnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -211,7 +211,7 @@ module.exports = sequelize => {
     },
     bvolume: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -220,7 +220,7 @@ module.exports = sequelize => {
     },
     mvolume: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -229,7 +229,7 @@ module.exports = sequelize => {
     },
     nvolume: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -238,7 +238,7 @@ module.exports = sequelize => {
     },
     svolume: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -259,32 +259,32 @@ module.exports = sequelize => {
     },
     rlstate: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 1
     },
     glstate: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 1
     },
     ulstate: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 1
     },
     susetype: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 1
     },
     statewarning: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     termofwarning: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 15,
       validate: {
         min: 3,
@@ -306,7 +306,7 @@ module.exports = sequelize => {
     },
     grid: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       validate: {
         min: 0,
@@ -315,12 +315,12 @@ module.exports = sequelize => {
     },
     guidecnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     alertcnt: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0
     },
     user_mod: {
