@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "migrate:up":   "npx sequelize-cli db:migrate --env development",
+    "migrate:up": "npx sequelize-cli db:migrate --env development",
     "migrate:undo": "npx sequelize-cli db:migrate:undo:all --env development",
-    "seed:up":      "npx sequelize-cli db:seed:all --env development",
-    "seed:down":    "npx sequelize-cli db:seed:undo:all --env development"
+    "seed:up": "npx sequelize-cli db:seed:all --env development",
+    "seed:down": "npx sequelize-cli db:seed:undo:all --env development"
   },
   "dependencies": {
+    "amqplib": "^0.10.4",
     "bcrypt": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",

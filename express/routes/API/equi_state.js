@@ -1,3 +1,6 @@
+// RabbitMQ
+const amqp = require('amqplib');
+
 const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
@@ -23,8 +26,47 @@ async function create (req, res) {
     res.status(400).json('Bad request: ID should not be provided, since it is determined automatically by the db.');
   } else {
     // Validate local_num and local_area_controller_number
-    console.log('HERE');
-    await models.Equi_States.create(req.body);
+    //** -- Test BEGIN 
+    // AMQP Connection
+    const connection = await amqp.connect('amqp://ims_dev:4419gksrlf!@49.254.109.69:5672/IOT_NEW', async (error0, connection) => {
+      if(error0) throw error0;
+    });
+    
+    //Create Channel
+    const channel = await connection.createChannel( async (error1, channel) =>{
+        if(error1) {throw error1;}
+
+    });
+    
+    // Create Exchange
+    const exchange   = 'CRUD';
+    const routingKey = 'React_app';
+
+    await channel.assertExchange(exchange, 'direct', {durable: false });
+
+    // Declare Queue , not created yet
+    const queue   = 'UpdateItem';
+    channel.assertQueue(queue, { durable: true });
+        
+
+    // BindChannel to Queue
+    await channel.bindQueue(queue.queue, exchange, routingKey);
+    
+    const message = 'HelloRabbitMQ';
+    
+    await channel.publish(exchange, routingKey, Buffer.from(message));
+    //channel.sendToQueue(queue, new Buffer(message));
+    
+    console.log(' [x] Sent %s:', message);
+    
+    // Close Connetion
+    setTimeout(()=> {
+      connection.close();
+      //process.exit(0);
+    }, 500);
+
+    //** -- Test END
+    //await models.Equi_States.create(req.body);
     res.status(201).end();
   }
 }
