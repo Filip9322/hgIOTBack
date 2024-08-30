@@ -52,10 +52,16 @@ async function create (req, res) {
     // BindChannel to Queue
     await channel.bindQueue(queue.queue, exchange, routingKey);
     
-    const message = 'HelloRabbitMQ';
+    const options = {
+      persistent: true,
+      timestamp: Date.now(),
+      contentEncoding: 'utf-8',
+      contenType: 'text/plain'
+    }
+    const message = req.body;
     
-    await channel.publish(exchange, routingKey, Buffer.from(message));
-    //channel.sendToQueue(queue, new Buffer(message));
+    // #publish(exchange, routingKey, content, [options])
+    await channel.publish(exchange, routingKey, Buffer.from(JSON.stringify(message)), options);
     
     console.log(' [x] Sent %s:', message);
     
