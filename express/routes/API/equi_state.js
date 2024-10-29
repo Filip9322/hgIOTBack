@@ -1,6 +1,3 @@
-// RabbitMQ
-const amqp = require('amqplib');
-
 const { models } = require('../../../sequelize');
 const { getIdParam } = require('../../helpers');
 
@@ -26,7 +23,53 @@ async function create (req, res) {
     res.status(400).json('Bad request: ID should not be provided, since it is determined automatically by the db.');
   } else {
     // Validate local_num and local_area_controller_number
-    //** -- Test BEGIN 
+    
+    //await models.Equi_States.create(req.body);
+    res.status(201).end();
+  }
+}
+
+async function update (req, res) {
+  const _id = getIdParam(req);
+  // We only accep a UPDATE request if the `:id` param matches the body `id` from the body
+  if (req.body.id === _id) {
+    await models.Equi_States.update(req.body, {
+      where: {
+        id: _id,
+        is_deleted: false
+      }
+    });
+    res.status(200).end();
+  } else {
+    res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);
+  }
+}
+
+async function remove (req, res) {
+  const _id = getIdParam(req);
+  // We only accep a UPDATE request if the `:id` param matches the body `id` from the body
+  if (req.body.id === _id) {
+    let body = {'is_deleted': true };
+    await models.Equi_States.update(body, {where: { id: _id }});
+    res.status(200).end();
+  } else {
+    res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);
+  }
+}
+
+module.exports = {
+  getAll,
+  getById,
+  create,
+  update,
+  remove
+}
+    
+    // RabbitMQ
+    //const amqp = require('amqplib');
+    //2024-10-31
+    //** -- Test BEGIN
+    /*
     // AMQP Connection
     const connection = await amqp.connect('amqp://ims_dev:4419gksrlf!@49.254.109.69:5672/IOT_NEW', async (error0, connection) => {
       if(error0) throw error0;
@@ -70,45 +113,5 @@ async function create (req, res) {
       connection.close();
       //process.exit(0);
     }, 500);
-
+    */
     //** -- Test END
-    //await models.Equi_States.create(req.body);
-    res.status(201).end();
-  }
-}
-
-async function update (req, res) {
-  const _id = getIdParam(req);
-  // We only accep a UPDATE request if the `:id` param matches the body `id` from the body
-  if (req.body.id === _id) {
-    await models.Equi_States.update(req.body, {
-      where: {
-        id: _id,
-        is_deleted: false
-      }
-    });
-    res.status(200).end();
-  } else {
-    res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);
-  }
-}
-
-async function remove (req, res) {
-  const _id = getIdParam(req);
-  // We only accep a UPDATE request if the `:id` param matches the body `id` from the body
-  if (req.body.id === _id) {
-    let body = {'is_deleted': true };
-    await models.Equi_States.update(body, {where: { id: _id }});
-    res.status(200).end();
-  } else {
-    res.status(400).json(`Bad request: param ID (${id}) does not match body ID(${req.body.id})`);
-  }
-}
-
-module.exports = {
-  getAll,
-  getById,
-  create,
-  update,
-  remove
-}
