@@ -3,8 +3,7 @@ const { getIdParam } = require('../../helpers');
 
 async function getAll(req,  res) {
   res.status(200).json('Not allowed');
-}
-
+} 
 async function getById(req, res) {
   const _id = getIdParam(req);
   const equi_state = await models.Equi_States.findOne(
@@ -18,14 +17,20 @@ async function getById(req, res) {
 }
 
 async function create (req, res) {
-  console.log(Object.keys(req));
   if(req.body.id) {
     res.status(400).json('Bad request: ID should not be provided, since it is determined automatically by the db.');
   } else {
     // Validate local_num and local_area_controller_number
-    
+    let equi_state_byLora = await models.Equi_States.findOne( {where: { lora_id: req.body.lora_id}} );
+
+    if (equi_state_byLora){
+      res.status(400).json(`Bad request: LoraId (${req.body.lora_id}) already exists in the Database.`);
+    } else {
+      // CREATE new equi_state
+      
+      res.status(200).end();
+    }
     //await models.Equi_States.create(req.body);
-    res.status(201).end();
   }
 }
 
