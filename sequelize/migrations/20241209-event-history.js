@@ -15,9 +15,11 @@ module.exports = {
         allowNull: false
       },
       occur_time: {
-
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: '2024-12-01 00:00:00'
       },
-      inse_num: {
+      controller_local_area_id: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -32,7 +34,7 @@ module.exports = {
       event_time: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: '00:00:00'
+        defaultValue: '2024-12-01 00:00:00'
       },
       event_gubn: {
         type: Sequelize.INTEGER,
@@ -74,12 +76,12 @@ module.exports = {
         defaultValue: 0
       },
       time1: {
-        type: Sequelize.DATE,
+        type: Sequelize.TIME,
         allowNull: true,
         defaultValue: '00:00:00'
       },
       time2: {
-        type: Sequelize.DATE,
+        type: Sequelize.TIME,
         allowNull: true,
         defaultValue: '00:00:00'
       },
@@ -127,7 +129,7 @@ module.exports = {
       result: {
         type: Sequelize.STRING(30),
         allowNull: false,
-        defaultValue: '미완료'
+        defaultValue: "미완료"
       },
       bigo: {
         type: Sequelize.STRING(255),

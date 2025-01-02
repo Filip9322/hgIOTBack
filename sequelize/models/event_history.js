@@ -21,9 +21,9 @@ module.exports = sequelize => {
     },
     occur_time: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: false
     },
-    inse_num: {
+    controller_local_area_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -36,9 +36,9 @@ module.exports = sequelize => {
       allowNull: false
     },
     event_time: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: '00:00:00'
+      defaultValue: '2024-12-01 00:00:00'
     },
     event_gubn: {
       type: DataTypes.INTEGER,
